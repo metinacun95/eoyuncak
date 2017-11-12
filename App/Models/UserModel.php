@@ -17,7 +17,7 @@
 		function create($data = []){
 
 			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='".$data['KullaniciAdi']."' OR Eposta='".$data['Eposta']."'");
-			var_dump($update);
+			
 
 			if(count($user)>0){
 
