@@ -13,9 +13,12 @@
 		function login($username,$password){
 			$this->db->table("kullanicilar")->where("username",$username)->where("password",$password)->limit(1)->get();
 			$thid->db->query("SELECT * FROM kullanicilar WHERE username='$username' AND password='$password' LIMIT 1");
+			return [
+				"error" => 1
+				"errorMessage" => "Kullanıcı bulunamadı."
+			];
 		}
 		function isLogin(){
-			// teşekkürler adamım yoo men :D
 			if(isset($_SESSION["login"])){
 				return true;
 			}

@@ -4,7 +4,6 @@
 	use System\Libraries\Config;
 	class UserModel extends Model{
 		public $link = "";
-		public $sayfalamaLimit = 12;
 		function __construct(){
 			parent::__construct();
 			$config = new Config();

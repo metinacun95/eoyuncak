@@ -2,6 +2,7 @@
 	namespace App\Models;
 	use System\Libraries\Model;
 	use System\Libraries\Config;
+	use IOModel;
 	class Productodel extends Model{
 		public $link = "";
 		function __construct(){
@@ -9,6 +10,62 @@
 			$config = new Config();
 			$siteConfig = $config->get("Site");
 			$this->link = $siteConfig["link"];
+		}
+		function create(){
+			$io = new IOModel();
+			$userId = $io->getId();
+			$newProduct = $this->db->table("urunler")->insert([
+				"UyeId" => $userId
+			]);
+			return $this->db->insertId();
+		}
+		function getCategories($sub = 0){
+			return $this->db->table("kategoriler")->select("*")->where("Alt",$sub)->orderBy("sira","ASC")->getAll();
+		}
+		function getProducyTypes($categoryId = 0){
+			return $this->db->table("uruntipler")->select("*")->where("KategoriId",$categoryId)->getAll();
+		}
+		function getProductDetails($productType = 0){
+			return $this->db->table("urunozellikler")->select("*")->where("UrunTipId",$productType)->where("Alt",0)->getAll();
+		}
+		function getProductDetailSub($productType = 0,$productDetailId = 0){
+			return $this->db->table("urunozellikler")->select("*")->where("UrunTipId",$productType)->where("Alt",$productDetailId)->getAll();
+		}
+		function updateProductStandart($productId = 0,$userId = 0,$data=[]){
+			$this->db->table("urunler")->where("UrunId",$productId)->where("UyeId",$userId)->update($data);
+		}
+		function updateProductAdvanced($productId = 0,$userId = 0,$data){
+			$control = $this->db->table("urunler")->select("UrunId")->where("UrunId",$productId)->where("UyeId",$userId)->get();
+			if(count($control) > 0){
+				foreach($data as $key => $value){
+					$selectProductDetail = $this->db->table("urunozellikler")->select("*")->where("OzellikId",intval($key))->where("UrunTipId",$control->UrunTip)->get();
+					if(count($selectProductDetail) > 0){
+						$selectProductValue = $this->db->table("urunozellikdegerler")->select("OzellikDegerId")->where("UrunId",$productId)->where("OzellikId",intval($key));
+						if(count($selectProductValue) > 0){
+							$this->db->table("urunozellikdegerler")->where("UrunId",$productId)->where("OzellikId",intval($key))->update(["OzellikDeger" => $value]);
+						}
+						else{
+							$this->db->table("urunozellikdegerler")->insert(["UrunId" => $productId,"OzellikId" => $key, "OzellikDeger" => $value]);
+						}
+						return [
+							"error" => 0,
+							"errorMessage" => "Bilgiler Güncellendi"
+						];
+					}
+					else{
+						return [
+							"error" => 2,
+							"errorMessage" => "Ürüne ait olmayan özellik eklenmeye çalışılıyor"
+						];
+					}
+				}
+			}
+			else{
+				return [
+					"error" => 1,
+					"errorMessage" => "Bu ürün bu üyeye ait değil"
+				];
+			}
 		}
 	}
 ?>
