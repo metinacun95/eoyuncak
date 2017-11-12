@@ -8,7 +8,7 @@
 		public function index(){
 			$this->master = new MasterController;
 			$this->master->head([
-				"css" => ["https://fonts.googleapis.com/css?family=Open+Sans","reset.css","style.css"],
+				"css" => ["reset.css","style.css"],
 				"js" => ["jquery.js","js.js"],
 				"title" => "E-Oyuncak - Anasayfa"
 			]);

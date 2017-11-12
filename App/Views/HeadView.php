@@ -7,37 +7,14 @@
 <?php
 		for($i = 0; $i<count($js); $i++){
 		?>
-	<script type="text/javascript" src="<?php echo $link."js/".$js[$i]; ?>?v=1.2"></script>
+	<script type="text/javascript" src="<?php echo $link."js/".$js[$i]; ?>?v=<?php echo time(); ?>"></script>
 <?php
 		}
 		for($i = 0; $i<count($css); $i++){
 		?>
-	<link rel="stylesheet" href="<?php echo $link."css/".$css[$i]; ?>?v=1.2" />
+	<link rel="stylesheet" href="<?php echo $link."css/".$css[$i]; ?>?v=<?php echo time(); ?>" />
 <?php
 		}
 	?>
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-	<link rel="icon" type="image/png" href="<?php echo $link; ?>images/icon.png" />
 </head>
 <body>
-	<div class="main">
-		<header class="header">
-			<div class="center2">
-				<div class="logo">
-					<a href="<?php echo $link; ?>">
-						<img src="<?php echo $link; ?>images/logo.png" alt="" />
-					</a>
-				</div>
-				<menu class="menu">
-					<ul>
-						<li>Menü <span>+</span></li>
-						<li><a href="<?php echo $link; ?>">Ana Sayfa</a></li>
-						<li><a href="<?php echo $link; ?>whoWeAre.html">Biz Kimiz</a></li>
-						<li><a href="<?php echo $link; ?>services.html">Hizmetlerimiz</a></li>
-						<li><a href="<?php echo $link; ?>products.html">Ürünler</a></li>
-						<li><a href="<?php echo $link; ?>referanslar.html">Referanslarımız</a></li>
-						<li><a href="<?php echo $link; ?>bizeUlasin.html">Bize Ulaşın</a></li>
-					</ul>
-				</menu>
-			</div>
-		</header>
