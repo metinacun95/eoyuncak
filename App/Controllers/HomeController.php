@@ -12,7 +12,6 @@
 				"js" => ["jquery.js","js.js"],
 				"title" => "E-Oyuncak - Anasayfa"
 			]);
-			$sm = new SiteModel;
 			$this->master->end();
 		}
 	}

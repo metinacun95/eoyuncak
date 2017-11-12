@@ -13,29 +13,6 @@
 			}
 			$this->view("Head",$data);
 		}
-		public function headAdmin($settings = []){
-			$data = [
-				"link" => $this->link,
-				"js" => [],
-				"css" => []
-			];
-			foreach($settings as $key => $value){
-				$data[$key] = $value;
-			}
-			$this->view("admin/HeadAdmin",$data);
-		}
-		public function headAdmin2($settings = []){
-			$data = [
-				"link" => $this->link,
-				"js" => [],
-				"css" => []
-			];
-			foreach($settings as $key => $value){
-				$data[$key] = $value;
-			}
-			$this->view("admin/HeadAdmin",$data);
-			$this->view("admin/Menu",$data);
-		}
 		public function end(){
 			$this->view("End");
 		}
