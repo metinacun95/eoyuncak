@@ -18,9 +18,10 @@
 
 			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='".$data['KullaniciAdi']."' OR Eposta='".$data['Eposta']."'");
 
-			if(count($user)>0){
+			if(count($user)==0){
 
 				$create = $this->db->table('uyeler')->insert($data);
+				var_dump($this->db->insertId());
 
 				if($this->db->insertId() > 0){
 
@@ -48,6 +49,10 @@
 
 		function update($data = [], $id){
 
+			if(isset($data['Parola'])){
+				$data['Parola'] = md5($data['Parola']);
+			}
+
 			$update = $this->db->table('uyeler')->where('UyeId',$id)->update($data);
 			if(count($update) > 0){
 
@@ -61,6 +66,26 @@
 					'error' => 1,
 					'errorMessage' => "Bir hata oluştu. Güncelleme işlemi başarısız !"
 				];
+			}
+		}
+
+		function delete($id){
+
+			$delete = $this->db->table('uyeler')->where('UyeId',$id)->delete();
+
+			if($delete){
+
+				return [
+					'error' => 0,
+					'errorMessage' => "Üye başarı ile silindi."
+				];
+			}else{
+
+				return [
+					'error' => 1,
+					'errorMessage' => "Bir hata oluştu. Üye silinemedi !"
+				];
+
 			}
 		}
 	}

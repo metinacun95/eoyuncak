@@ -12,14 +12,16 @@
 		}
 		function login($username,$password){
 
-			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi=$username OR Eposta=$username AND Parola=$password");
+			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='$username' OR Eposta='$username' AND Parola='$password'");
+
 
 			if(count($user)>0){
-
-				$_SESSION['userId'] = $user -> UyeId;
-				$_SESSION['rolId'] = $user -> RolId;
-				$_SESSION['userName'] = $username;
-				$_SESSION["md5"] = md5($user->UyeId.$user->RolId.$username);
+				foreach ($user as $u) {
+					$_SESSION['userId'] = $u->UyeId;
+					$_SESSION['rolId'] = $u->RolId;
+					$_SESSION['userName'] = $username;
+					$_SESSION["md5"] = md5($u->UyeId.$u->RolId.$username);
+				}
 				return [
 					'error' => 0,
 					'errormessage' => "Giriş Başarılı"
@@ -32,7 +34,7 @@
 				];
 			}
 			
-			
+
 		}
 
 		function logout(){
@@ -43,9 +45,12 @@
 
 		function isLogin(){
 
-			if($_SESSION['md5'] == md5($_SESSION['userId'].$_SESSION['rolId'].$_SESSION['userName'])){
+			if(isset($_SESSION['md5']) && isset($_SESSION['userId']) &&isset($_SESSION['rolId']) && isset($_SESSION['userName'])){
+				
+				if($_SESSION['md5'] == md5($_SESSION['userId'].$_SESSION['rolId'].$_SESSION['userName'])){
 
-				return true;
+						return true;
+					}
 			}
 			return false;
 		}
