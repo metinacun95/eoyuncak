@@ -15,6 +15,7 @@
 			$thid->db->query("SELECT * FROM kullanicilar WHERE username='$username' AND password='$password' LIMIT 1");
 		}
 		function isLogin(){
+			// teşekkürler adamım yoo men :D
 			if(isset($_SESSION["login"])){
 				return true;
 			}
