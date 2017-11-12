@@ -10,5 +10,16 @@
 			$siteConfig = $config->get("Site");
 			$this->link = $siteConfig["link"];
 		}
+		function login($username,$password){
+			$this->db->table("kullanicilar")->where("username",$username)->where("password",$password)->limit(1)->get();
+			$thid->db->query("SELECT * FROM kullanicilar WHERE username='$username' AND password='$password' LIMIT 1");
+		}
+		function isLogin(){
+			return true;
+			if(isset($_SESSION["login"])){
+				return true;
+			}
+			return false;
+		}
 	}
 ?>

@@ -1,7 +1,8 @@
 <?php
 	return [
 		"directs" => [
-			"/" => "App\Controllers\HomeController@index"
+			"/" => "App\Controllers\HomeController@index",
+			"login.html" => "App\Controllers\IOController@login"
 		],
 		"preg_matches" =>[
 			//"/" => "App\Controllers\HomeController@index"
