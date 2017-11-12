@@ -16,10 +16,10 @@
 			]);
 			$this->master->end();*/
 			$a = new UserModel();
-			$a->create(['KullaniciAdi' => "Metin",'Eposta' => "sdasd", 'Parola' => md5("sadas1")]);
+			$a->create(['KullaniciAdi' => "Mustafa",'Eposta' => "mustafi", 'Parola' => md5("sa44das1")]);
 		}
 
 		
-		
+
 	}
 ?>
