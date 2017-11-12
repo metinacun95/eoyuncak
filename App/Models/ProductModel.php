@@ -67,5 +67,34 @@
 				];
 			}
 		}
+		function delete($productId = 0,$userId = 0){
+			$control = $this->db->table("urunler")->where("UrunId",$productId)->where("UyeId",$userId)->get();
+			if(count($control) > 0){
+				$this->db->table("urunler")->where("UrunId",$productId)->delete();
+				$this->db->table("urunozellikdegerler")->where("UrunId",$productId)->delete();
+				return [
+					"error" => 0,
+					"errorMessage" => "Ürün başarıyla silindi."
+				];
+			}
+			else{
+				return [
+					"error" => 1,
+					"errorMessage" => "Bu üye bu ürünü silemez"
+				];
+			}
+		}
+		function get($productId = 0){
+			return $this->
+			db->
+			table("urunler")->
+			select("*")->
+			where("UrunId",$productId)->
+			innerJoin("urunozellikler","urunler.UrunTip","urunozellikler.UrunTipId")->
+			innerJoin("urunozellikdegerler","urunler.UrunId","urunozellikdegerler.UrunId")->
+			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
+			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
+			get();
+		}
 	}
 ?>
