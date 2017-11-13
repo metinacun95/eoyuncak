@@ -4,13 +4,6 @@
 	use System\Libraries\Config;
 	use IOModel;
 	class Productodel extends Model{
-		public $link = "";
-		function __construct(){
-			parent::__construct();
-			$config = new Config();
-			$siteConfig = $config->get("Site");
-			$this->link = $siteConfig["link"];
-		}
 		function create(){
 			$io = new IOModel();
 			$userId = $io->getId();
@@ -95,6 +88,48 @@
 			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
 			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
 			get();
+		}
+		function insertImageToProduct($imgFile = "",$productId = 0){
+			$newFileName = $this->randomFileName();
+			if(file_exists($imgFile)){
+				copy($imgFile,$newFileName);
+				$this->db->table("urunresimler")->insert(["UrunId" => $productId,"ResimYol" => $newFileName]);
+				if($this->db->insertId() > 0){
+					return [
+						"error" => 0,
+						"errorMessage" => "Resim ürüne başarıyla eklendi"
+					];
+				}
+				return [
+					"error" => 1,
+					"errorMessage" => "Resim ürüne eklenemedi"
+				];
+			}
+			return [
+				"error" => 1,
+				"errorMessage" => "Resim bulunamadı"
+			];
+		}
+		function randomFileName(){
+			$abc = "ABCDEFGHIJKLMNOPRSTUVYZWXQ";
+			$numbers = "0123456789";
+			$Text = "";
+			if($Size == 0){
+				$Size = 8; // Default
+			}
+			for($i=0;$i<=$Size;$i++){
+				$Rand1 = rand(0,1);
+				if($Rand1 == 0){
+					$Text.= $abc[rand(0,strlen($abc)-1)];
+				}
+				else{
+					$Text.= $numbers[rand(0,strlen($numbers)-1)];
+				}
+			}
+			if(file_exists(PATH."/App/Front/images/productImages/".$Text.".png")){
+				return randomFileName();
+			}
+			return $Text;
 		}
 	}
 ?>
