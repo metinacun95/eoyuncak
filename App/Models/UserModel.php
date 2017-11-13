@@ -11,6 +11,11 @@
 
 			if(count($user)==0){
 
+				if(isset($data['Parola'])){
+
+					$data['Parola'] = md5($data['Parola']);
+				}
+
 				$create = $this->db->table('uyeler')->insert($data);
 
 				if($this->db->insertId() > 0){
@@ -40,10 +45,12 @@
 		function update($data = [], $id){
 
 			if(isset($data['Parola'])){
+
 				$data['Parola'] = md5($data['Parola']);
 			}
 
 			$update = $this->db->table('uyeler')->where('UyeId',$id)->update($data);
+			
 			if(count($update) > 0){
 
 				return [
@@ -79,14 +86,29 @@
 			}
 		}
 
-		function show($id){
+		function get($id){
 
 			$user = $this->db->query("SELECT * FROM uyeler WHERE UyeId='$id'");
 
 			if(count($user)>0){
 
-				
+				foreach($user as $u){
+					return $u;
+				}
+			}else{
+
+				return [
+					'error' => 1,
+					'errorMessage' => "Böyle bir üye bulunamadı."
+				];
 			}
+		}
+
+		function getAll(){
+
+			$users = $this->db->query("SELECT * FROM uyeler");
+			
+			return $users;
 		}
 	}
 ?>
