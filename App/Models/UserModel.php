@@ -5,15 +5,6 @@
 
 	class UserModel extends Model{
 
-		public $link = "";
-		public $sayfalamaLimit = 12;
-		function __construct(){
-			parent::__construct();
-			$config = new Config();
-			$siteConfig = $config->get("Site");
-			$this->link = $siteConfig["link"];
-		}
-
 		function create($data = []){
 
 			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='".$data['KullaniciAdi']."' OR Eposta='".$data['Eposta']."'");
@@ -21,7 +12,6 @@
 			if(count($user)==0){
 
 				$create = $this->db->table('uyeler')->insert($data);
-				var_dump($this->db->insertId());
 
 				if($this->db->insertId() > 0){
 
@@ -71,7 +61,7 @@
 
 		function delete($id){
 
-			$delete = $this->db->table('uyeler')->where('UyeId',$id)->delete();
+			$delete = $this->db->table('uyeler')->where('UyeId', $id)->delete();
 
 			if($delete){
 
@@ -86,6 +76,16 @@
 					'errorMessage' => "Bir hata oluştu. Üye silinemedi !"
 				];
 
+			}
+		}
+
+		function show($id){
+
+			$user = $this->db->query("SELECT * FROM uyeler WHERE UyeId='$id'");
+
+			if(count($user)>0){
+
+				
 			}
 		}
 	}
