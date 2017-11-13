@@ -2,6 +2,7 @@
 	namespace App\Controllers;
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
+	use App\Models\IOModel;
 	use PHPMailer;
 	class HomeController extends Controller{ // HomeController@index
 		
@@ -15,11 +16,12 @@
 				"title" => "E-Oyuncak - Anasayfa"
 			]);
 			$this->master->end();*/
-			$a = new UserModel();
-			$a->update(['KullaniciAdi' => "Abdurrezak", 'Parola' => "Şafak"],2);
+
+			$user = new UserModel();
+			$io = new IOModel();
+			$user->delete(6);
+			//$a->update();
+			
 		}
-
-		
-
 	}
 ?>
