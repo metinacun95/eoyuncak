@@ -2,7 +2,9 @@
 	return [
 		"directs" => [
 			"/" => "App\Controllers\HomeController@index",
-			"login.html" => "App\Controllers\IOController@login"
+			"login.html" => "App\Controllers\IOController@login",
+			"newProduct.html" => "App\Controllers\TestController@newProduct",
+			"newProductAjax" => "App\Controllers\TestController@newProductAjax"
 		],
 		"preg_matches" =>[
 			//"/" => "App\Controllers\HomeController@index"
