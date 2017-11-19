@@ -3,7 +3,7 @@
 	use System\Libraries\Model;
 	use System\Libraries\Config;
 	use IOModel;
-	class Productodel extends Model{
+	class ProductModel extends Model{
 		function create(){
 			$io = new IOModel();
 			$userId = $io->getId();
@@ -65,6 +65,10 @@
 			if(count($control) > 0){
 				$this->db->table("urunler")->where("UrunId",$productId)->delete();
 				$this->db->table("urunozellikdegerler")->where("UrunId",$productId)->delete();
+				$productImages = $this->db->table("urunresimler")->select("ResimYol")->where("UrunId",$productId)->getAll();
+				foreach($productImages as $p){
+					unlink(PATH."/App/Front/images/productImages/".$p["ResimYol"]);
+				}
 				return [
 					"error" => 0,
 					"errorMessage" => "Ürün başarıyla silindi."
