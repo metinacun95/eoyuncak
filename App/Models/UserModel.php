@@ -66,11 +66,11 @@
 			}
 		}
 
-		function delete($id){
+		function destroy($id){
 
-			$delete = $this->db->table('uyeler')->where('UyeId', $id)->delete();
+			$destroy = $this->db->table('uyeler')->where('UyeId', $id)->delete();
 
-			if($delete){
+			if($destroy){
 
 				return [
 					'error' => 0,
