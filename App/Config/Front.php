@@ -1,3 +1,3 @@
 <?php
-	return $config["Front"] = array("css","images","js");
+	return $config["Front"] = array("css","images","js","fonts");
 ?>

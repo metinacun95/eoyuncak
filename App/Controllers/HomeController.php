@@ -8,19 +8,11 @@
 		
 		public $master;
 		public function index(){
-			/*
 			$this->master = new MasterController;
 			$this->master->head([
-				"css" => ["reset.css","style.css"],
-				"js" => ["jquery.js","js.js"],
 				"title" => "E-Oyuncak - Anasayfa"
 			]);
-			$this->master->end();*/
-
-			$user = new UserModel();
-			$io = new IOModel();
-			$user->delete(6);
-			//$a->update();
+			$this->master->end();
 			
 		}
 	}

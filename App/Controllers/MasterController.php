@@ -1,20 +1,32 @@
 <?php
 	namespace App\Controllers;
 	use App\Models\SiteModel;
+	use App\Models\ProductModel;
 	class MasterController extends Controller{
 		public function head($settings = []){
 			$data = [
 				"link" => $this->link,
 				"js" => [],
-				"css" => []
+				"css" => [
+					"bootstrap.min.css",
+					"font-awesome.min.css",
+					"prettyPhoto.css",
+					"price-range.css",
+					"animate.css",
+					"main.css",
+					"responsive.css",
+				]
 			];
 			foreach($settings as $key => $value){
 				$data[$key] = $value;
 			}
-			$this->view("Head",$data);
+			$c = new ProductModel;
+			$data["cats"] = $c->getCategories();
+			
+			$this->view("Master/Head",$data);
 		}
 		public function end(){
-			$this->view("End");
+			$this->view("Master/End");
 		}
 	}
 ?>
