@@ -12,6 +12,9 @@
 			]);
 			return $this->db->insertId();
 		}
+		function newCategory($categoryName = "",$sub = 0){
+			
+		}
 		function getCategories($sub = 0){
 			return $this->db->table("kategoriler")->select("*")->where("Alt",$sub)->orderBy("sira","ASC")->getAll();
 		}

@@ -10,7 +10,7 @@
 			"editprofile.html" => "App\Controllers\UserController@editprofile",
 			"cart.html" => "App\Controllers\CartController@index",
 			"addcart.html" => "App\Controllers\CartController@addCart",
-			"newproduct.html" => "App\Controllers\ProductController@newproduct"
+			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"tnewProduct.html" => "App\Controllers\TestController@newProduct",
 			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax"
 		],

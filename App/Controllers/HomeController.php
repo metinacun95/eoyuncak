@@ -9,13 +9,11 @@
 		
 		public $master;
 		public function index(){
-			/*
 			$this->master = new MasterController;
 			$this->master->head([
-				"css" => ["reset.css","style.css"],
-				"js" => ["jquery.js","js.js"],
 				"title" => "E-Oyuncak - Anasayfa"
 			]);
+<<<<<<< HEAD
 			$this->master->end();*/
 
 			$user = new UserModel();
@@ -24,6 +22,9 @@
 
 			$CartModel->get(2);
 			
+=======
+			$this->master->end();
+>>>>>>> upstream/master
 			
 		}
 	}
