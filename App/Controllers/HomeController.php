@@ -3,6 +3,7 @@
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
 	use App\Models\IOModel;
+	use App\Models\CartModel;
 	use PHPMailer;
 	class HomeController extends Controller{ // HomeController@index
 		
@@ -18,9 +19,11 @@
 			$this->master->end();*/
 
 			$user = new UserModel();
-			$io = new IOModel();
-			$user->delete(6);
-			//$a->update();
+			$IOModel = new IOModel();
+			$CartModel = new CartModel();
+
+			$CartModel->get(2);
+			
 			
 		}
 	}
