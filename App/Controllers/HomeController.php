@@ -13,19 +13,8 @@
 			$this->master->head([
 				"title" => "E-Oyuncak - Anasayfa"
 			]);
-<<<<<<< HEAD
-			$this->master->end();*/
-
-			$user = new UserModel();
-			$IOModel = new IOModel();
-			$CartModel = new CartModel();
-
-			$CartModel->get(2);
 			
-=======
 			$this->master->end();
->>>>>>> upstream/master
-			
 		}
 	}
 ?>

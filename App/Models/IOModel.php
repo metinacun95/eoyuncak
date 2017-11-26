@@ -6,7 +6,17 @@
 
 		function login($username,$password){
 
-			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='$username' OR Eposta='$username' AND Parola='$password'");
+			$password = md5($password);
+
+			if(strstr($username, "@")){
+
+				$user = $this->db->query("SELECT * FROM uyeler WHERE Eposta='$username' AND Parola='$password'");
+			}else{
+
+				$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='$username' AND Parola='$password'");
+			}
+
+			
 
 
 			if(count($user)>0){
@@ -33,7 +43,10 @@
 
 		function logout(){
 
-			session_destroy();
+			unset($_SESSION["userId"]);
+			unset($_SESSION["rolId"]);
+			unset($_SESSION["userName"]);
+			unset($_SESSION["md5"]);
 
 		}
 

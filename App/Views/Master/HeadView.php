@@ -16,6 +16,10 @@
 <?php
 		}
 	?>
+	<script type="text/javascript" src="<?php echo $link; ?>js/jquery.js"></script>
+	<script type="text/javascript">
+		var link = "<?php echo $link; ?>";
+	</script>
 </head>
 <body>
 	<header id="header"><!--header-->
@@ -84,7 +88,20 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<?php 
+									 
+									if($login){
+										?>
+											<li><a href="logout.html"><i class="fa fa-sign-out"> Çıkış Yap</i></a></li>
+											<li><a href="profile.html">Hoşgeldin, <?php echo $_SESSION["userName"] ?></a></li>
+										<?php
+									}else{
+										?>
+											<li><a href="login.html"><i class="fa fa-lock"></i> Giriş Yap</a></li>
+										<?php
+									}
+								?>
+								
 							</ul>
 						</div>
 					</div>

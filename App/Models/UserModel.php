@@ -6,7 +6,7 @@
 	class UserModel extends Model{
 
 		function create($data = []){
-
+			
 			$user = $this->db->query("SELECT * FROM uyeler WHERE KullaniciAdi='".$data['KullaniciAdi']."' OR Eposta='".$data['Eposta']."'");
 
 			if(count($user)==0){
@@ -109,6 +109,9 @@
 			$users = $this->db->query("SELECT * FROM uyeler");
 			
 			return $users;
+		}
+		function kontrolUsername($username = ""){
+			return $this->db->table("uyeler")->select("KullaniciAdi")->where("KullaniciAdi",$username)->getAll();
 		}
 	}
 ?>
