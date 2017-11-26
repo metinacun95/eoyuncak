@@ -14,6 +14,7 @@
 			$_SESSION["lang"] = "Tr";
 			$this->request = new Request;
 			$this->link = $this->config->get("Site","link");
+			
 		}
 		public function before(){}
 		public function after(){}

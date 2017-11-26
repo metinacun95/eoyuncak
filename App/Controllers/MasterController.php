@@ -2,6 +2,8 @@
 	namespace App\Controllers;
 	use App\Models\SiteModel;
 	use App\Models\ProductModel;
+	use App\Models\IOModel;
+
 	class MasterController extends Controller{
 		public function head($settings = []){
 			$data = [
@@ -21,8 +23,9 @@
 				$data[$key] = $value;
 			}
 			$c = new ProductModel;
+			$io = new IOModel;
 			$data["cats"] = $c->getCategories();
-			
+			$data["login"] = $io->isLogin();
 			$this->view("Master/Head",$data);
 		}
 		public function end(){

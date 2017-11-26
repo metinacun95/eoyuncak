@@ -5,7 +5,7 @@
 			"login.html" => "App\Controllers\IOController@login",
 			"logout.html" => "App\Controllers\IOController@logout",
 			"user.html" => "App\Controllers\UserController@index",
-			"singUp.html" => "App\Controllers\UserController@signUp",
+			"signUp.html" => "App\Controllers\UserController@signUp",
 			"profile.html" => "App\Controllers\UserController@profile",
 			"editprofile.html" => "App\Controllers\UserController@editprofile",
 			"cart.html" => "App\Controllers\CartController@index",
@@ -20,8 +20,9 @@
 			"deleteproduct/(.*?).html" => "App\Controllers\ProductController@deleteproduct -> {productSef => [1]}",
 			"deletecart/(.*?).html" => "App\Controllers\CartController@deletecart -> { productId => [1] }",
 			"categories.html" => "App\Controllers\CategoryController@index",
-			"categories/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => {1} }",
-			"ajaxSearch" => "App\Controllers\AjaxController@search"
+			"category/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => {1} }",
+			"ajaxSearch" => "App\Controllers\AjaxController@search",
+			"ajax" => "App\Controllers\AjaxController@index"
 			//"/" => "App\Controllers\HomeController@index"
 			/*"Kategori/(.*?)/Sayfa/(.*?).html" => "App\Controllers\KategoriController@sayfa -> {kategoriSefLink => [1], sayfaId => [2]}",
 			"Kategori/(.*?).html" => "App\Controllers\KategoriController@index -> {kategoriSefLink => [1]}",

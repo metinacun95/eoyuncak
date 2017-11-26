@@ -2,22 +2,23 @@
 	namespace App\Controllers;
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
-	use App\Models\IOModel;
 	use PHPMailer;
 	class AjaxController extends Controller{ // HomeController@index
 		
 		public $master;
 		public function index(){
-			/*
-			$this->master = new MasterController;
-			$this->master->head([
-				"css" => ["reset.css","style.css"],
-				"js" => ["jquery.js","js.js"],
-				"title" => "E-Oyuncak - Anasayfa"
-			]);
-			$this->master->end();*/
-			//$a->update();
-			
+			if($_POST){
+				if(isset($_POST["username"])){
+					$u = new UserModel;
+					$kontrol = $u->kontrolUsername($this->request->username);
+					if(count($kontrol) > 0){
+						echo "Bu kullanıcı adı zaten kayıtlı !";
+					}
+					else{
+						echo "Kullanıcı adı kullanılabilir !";
+					}
+				}
+			}
 		}
 	}
 ?>

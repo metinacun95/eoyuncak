@@ -3,6 +3,7 @@
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
 	use App\Models\IOModel;
+	use App\Models\CartModel;
 	use PHPMailer;
 	class HomeController extends Controller{ // HomeController@index
 		
@@ -12,8 +13,8 @@
 			$this->master->head([
 				"title" => "E-Oyuncak - Anasayfa"
 			]);
-			$this->master->end();
 			
+			$this->master->end();
 		}
 	}
 ?>
