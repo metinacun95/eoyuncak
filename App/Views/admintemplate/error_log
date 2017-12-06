@@ -1,0 +1,22 @@
+[25-Jul-2016 12:59:06 Europe/Istanbul] PHP Warning:  require_once(../sistem/ayar.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/noktas/public_html/admin/index.php on line 2
+[25-Jul-2016 12:59:06 Europe/Istanbul] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '../sistem/ayar.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/noktas/public_html/admin/index.php on line 2
+[25-Jul-2016 13:59:42 Europe/Istanbul] PHP Warning:  mb_convert_case() expects parameter 2 to be long, string given in /home/noktas/public_html/admin/urun_ekle.php on line 262
+[25-Jul-2016 14:00:59 Europe/Istanbul] PHP Warning:  mb_convert_case() expects parameter 2 to be long, string given in /home/noktas/public_html/admin/urun_ekle.php on line 262
+[25-Jul-2016 14:06:10 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:07:13 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:07:17 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:07:23 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:08:15 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:08:16 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:10:10 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[25-Jul-2016 14:14:37 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_STRING in /home/noktas/public_html/sistem/fonksiyon.php on line 97
+[26-Jul-2016 20:52:27 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ')' in /home/noktas/public_html/admin/urun_resim_degistir.php on line 244
+[26-Jul-2016 20:54:14 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ')' in /home/noktas/public_html/admin/urun_resim_degistir.php on line 244
+[26-Jul-2016 20:57:27 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ')' in /home/noktas/public_html/admin/urun_resim_degistir.php on line 244
+[26-Jul-2016 20:58:41 Europe/Istanbul] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ')' in /home/noktas/public_html/admin/urun_resim_degistir.php on line 244
+[26-Jul-2016 21:39:19 Europe/Istanbul] PHP Warning:  rename(../tr/hizmetler/web-tasarim/.php,../tr/hizmetler/reklamcilik/.php) [<a href='function.rename'>function.rename</a>]: No such file or directory in /home/noktas/public_html/admin/urun_duzenle.php on line 258
+[26-Jul-2016 21:55:09 Europe/Istanbul] PHP Warning:  rename(../tr/hizmetler/web-tasarim/.php,../tr/hizmetler/reklamcilik/.php) [<a href='function.rename'>function.rename</a>]: No such file or directory in /home/noktas/public_html/admin/urun_duzenle.php on line 258
+[26-Jul-2016 22:00:44 Europe/Istanbul] PHP Warning:  rename(../tr/hizmetler/reklamcilik/.php,../tr/hizmetler/web-tasarim/.php) [<a href='function.rename'>function.rename</a>]: No such file or directory in /home/noktas/public_html/admin/urun_duzenle.php on line 259
+[26-Jul-2016 22:03:52 Europe/Istanbul] PHP Warning:  rename(../tr/hizmetler/reklamcilik/.php,../tr/hizmetler/web-tasarim/.php) [<a href='function.rename'>function.rename</a>]: No such file or directory in /home/noktas/public_html/admin/urun_duzenle.php on line 260
+[26-Jul-2016 22:06:58 Europe/Istanbul] PHP Warning:  copy(../tr/hizmetler/reklamcilik/.php) [<a href='function.copy'>function.copy</a>]: failed to open stream: No such file or directory in /home/noktas/public_html/admin/urun_duzenle.php on line 260
+[26-Jul-2016 22:06:58 Europe/Istanbul] PHP Warning:  unlink(../tr/hizmetler/reklamcilik/.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/noktas/public_html/admin/urun_duzenle.php on line 261
