@@ -24,10 +24,10 @@
 						$categories = $p->getCategories($sub);
 						if(count($categories) > 0){
 							$categoryGroup = $this->setCategoryGroups($categoryGroup, $sub);
-							echo json_encode($categoryGroup);
+							echo json_encode(["categoryGroup" => $categoryGroup]);
 						}
 						else{
-							return [""];
+							echo json_encode([]);
 						}
 					}
 				}
@@ -38,10 +38,6 @@
 			$thisCategory = $p->getCategory($sub);
 			if(count($thisCategory) > 0){
 				$thisGroup = [];
-				if($thisCategory->Alt != 0){
-					$thisGroup = [$p->getCategories($thisCategory->Alt)];
-					$thisGroup["selected"] = $thisCategory->KategoriId;
-				}
 				$upGroup = [];
 				$upGroup = $this->getUpCategories($upGroup,$thisCategory->Alt);
 				$downGroup = [];
@@ -50,16 +46,15 @@
 			}
 			return $categoryGroup;
 		}
-		function getUpCategories($group,$sub = 0){
+		function getUpCategories($group,$sub = 0,$selected = 0){
 			$p = new ProductModel;
 			if($sub > 0){
 				$addGroup = $p->getCategories($sub);
-				$addGroup["selected"] = $sub;
 				array_unshift($group,$addGroup);
 				foreach($addGroup as $a){
 					$getUpCategory = $p->getCategory($a->Alt);
 					$sub = $getUpCategory->Alt;
-					$group = $this->getUpCategories($group,$sub);
+					$group = $this->getUpCategories($group,$sub,$a->Alt);
 					break;
 				}
 			}

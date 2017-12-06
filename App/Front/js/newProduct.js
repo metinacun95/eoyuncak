@@ -29,28 +29,43 @@ function cat(obj){
 		"data":{"i":"getCategories","sub":sub},
 		"dataType":"json",
 		success:function(result){
-			var add = "";
-			console.log(result.length);
-			for(var i=0; i<result.length;i++){
-				categoryGroup = result[i];
-				addAppend = '<select onChange="cat(this)">'; 
-				addAppend = addAppend + '<option value="0">Seçiniz</option>';
-				$.each(categoryGroup,function(key,value){
-					if(key != "selected"){
-						addAppend = addAppend + '<option value="'+value.KategoriId+'">'+value.KategoriAdi+'</option>';
+			if(typeof(result["categoryGroup"]) != "undefined"){
+				result = result["categoryGroup"];
+				if(result.length > 0){
+					var add = "";
+					for(var i=0; i<result.length;i++){
+						categoryGroup = result[i];
+						addAppend = '<select onChange="cat(this)">'; 
+						addAppend = addAppend + '<option value="0">Seçiniz</option>';
+						$.each(categoryGroup,function(key,value){
+							if(key != "selected"){
+								addAppend = addAppend + '<option value="'+value.KategoriId+'">'+value.KategoriAdi+'</option>';
+							}
+							else{
+								
+							}
+						});
+						addAppend = addAppend+ "</select>";
+						add = add + addAppend;
 					}
-					else{
-						$("option[value='"+value+"']").attr("selected","selected")
-					}
-				});
-				addAppend = addAppend+ "</select>";
-				add = add + addAppend;
+					$(".kategoriler").html(add);
+					saveSelecteds(result);
+				}
 			}
-			$(".kategoriler").html(add);
 		},
 		error:function(result){
 			console.log("error : ");
 			console.log(result);
+		}
+	});
+}
+function saveSelecteds(result){
+	$(document).ready(function(){
+		for(var i=0; i<result.length;i++){
+			categoryGroup = result[i];
+			$.each(categoryGroup,function(key,value){
+				$(".kategoriler option[value='"+value.Alt+"']").attr("selected",true);
+			});
 		}
 	});
 }
