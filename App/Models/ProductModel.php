@@ -2,7 +2,7 @@
 	namespace App\Models;
 	use System\Libraries\Model;
 	use System\Libraries\Config;
-	use IOModel;
+	use IOModel as io;
 	class ProductModel extends Model{
 		function create(){
 			$io = new IOModel();
@@ -14,6 +14,9 @@
 		}
 		function newCategory($categoryName = "",$sub = 0){
 			
+		}
+		function getCategory($categoryId = 0){
+			return $this->db->table("kategoriler")->select("*")->where("KategoriId",$categoryId)->get();
 		}
 		function getCategories($sub = 0){
 			return $this->db->table("kategoriler")->select("*")->where("Alt",$sub)->orderBy("sira","ASC")->getAll();

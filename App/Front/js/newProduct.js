@@ -1,39 +1,56 @@
 $(document).ready(function(){
 	$.ajax({
-		"url":link+"newProductAjax",
+		"url":link+"tnewProductAjax",
 		"type":"post",
 		"data":{"i":"getCategories"},
 		"dataType":"json",
 		success:function(result){
-			var append = '<select name="ana" id="" onChange="cat(this)">';
-			append = append + '<option value="0">Kategori Seçiniz</option>';
-			for(var i=0;i<result.length;i++){
-				append = append + '<option value="'+result[i]["KategoriId"]+'">'+result[i]["KategoriAdi"]+'</option>';
+			var add = "";
+			for(var i=0; i<result.length;i++){
+				categoryGroup = result[i];
+				addPreend = '<select onChange="cat(this)">'; 
+				addPreend = addPreend + "<option value='0'>Kategori Seçiniz</option>"
+				for(var j=0; j<categoryGroup.length;j++){
+					addPreend = addPreend + '<option value="'+categoryGroup[j].KategoriId+'">'+categoryGroup[j].KategoriAdi+'</option>';
+				}
+				addPreend = addPreend+ "</select>";
+				add = addPreend + add;
 			}
-			var append = append + '</select> <br />';
-			$(".kategoriler").html(append);
+			$(".kategoriler").html(add);
 		}
 	});
 });
 function cat(obj){
-	var obj = $(obj);
-	var ex = obj.attr("name").split("-");
-	var sub = ex[1];
-	var catId = obj.val();
-	$("select[name='cat-"+sub+"']").remove();
+	obj = $(obj);
+	var sub = obj.val();
 	$.ajax({
-		"url":link+"newProductAjax",
+		"url":link+"tnewProductAjax",
 		"type":"post",
-		"data":{"i":"getCategories","sub":catId},
+		"data":{"i":"getCategories","sub":sub},
 		"dataType":"json",
 		success:function(result){
-			var append = '<select name="cat-'+sub+'" id="" onSelect="cat(this)">';
-			append = append + '<option value="0">Kategori Seçiniz</option>';
-			for(var i=0;i<result.length;i++){
-				append = append + '<option value="'+result[i]["KategoriId"]+'">'+result[i]["KategoriAdi"]+'</option>';
+			var add = "";
+			console.log(result.length);
+			for(var i=0; i<result.length;i++){
+				categoryGroup = result[i];
+				addAppend = '<select onChange="cat(this)">'; 
+				addAppend = addAppend + '<option value="0">Seçiniz</option>';
+				$.each(categoryGroup,function(key,value){
+					if(key != "selected"){
+						addAppend = addAppend + '<option value="'+value.KategoriId+'">'+value.KategoriAdi+'</option>';
+					}
+					else{
+						$("option[value='"+value+"']").attr("selected","selected")
+					}
+				});
+				addAppend = addAppend+ "</select>";
+				add = add + addAppend;
 			}
-			var append = append + '</select> <br />';
-			$(".kategoriler").append(append);
+			$(".kategoriler").html(add);
+		},
+		error:function(result){
+			console.log("error : ");
+			console.log(result);
 		}
 	});
 }
