@@ -15,6 +15,9 @@
 		<div class="kategoriler">
 			
 		</div>
+		<div class="ozellikler">
+			
+		</div>
 	</form>
 </body>
 </html>
