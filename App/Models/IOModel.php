@@ -40,13 +40,24 @@
 			
 
 		}
-
+		function adminLogin($username,$password){
+			$adminFind = $this->db->table("uyeler")->select("UyeId")->where("KullaniciAdi",$username)->where("Parola",md5($password))->where("RolId",1)->getAll();
+			/*echo "<pre>";
+			var_dump($adminFind);
+			exit;*/
+			if(count($adminFind) > 0){
+				$_SESSION["adminLogin"] = true;
+				return true;
+			}
+			return false;
+		}
 		function logout(){
 
 			unset($_SESSION["userId"]);
 			unset($_SESSION["rolId"]);
 			unset($_SESSION["userName"]);
 			unset($_SESSION["md5"]);
+			unset($_SESSION["adminLogin"]);
 
 		}
 

@@ -52,6 +52,16 @@ function cat(obj){
 					saveSelecteds(result);
 				}
 			}
+			else if(typeof(result["productTypes"]) != "undefined"){
+				var productTypes = result["productTypes"];
+				var add = '<select onChange="selectType(this)">';
+				add = add + '<option value="0">Seçiniz</option>'
+				for(var i=0; i<productTypes.length;i++){
+					add = add + '<option value="'+productTypes[i]["UrunTipId"]+'">'+productTypes[i]["UrunTipAdi"]+'</option>';
+				}
+				add = add + "</select>";
+				$(".urunTipler").html(add);
+			}
 		},
 		error:function(result){
 			console.log("error : ");
@@ -67,5 +77,12 @@ function saveSelecteds(result){
 				$(".kategoriler option[value='"+value.Alt+"']").attr("selected",true);
 			});
 		}
+	});
+}
+function selectType(obj){
+	var obj = $(obj);
+	$.ajax({
+		"type":"post",
+		"url":link+"tnewProductAjax"
 	});
 }

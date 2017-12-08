@@ -58,5 +58,26 @@
 				"redirect" => ""
 			]
 		],
+		"App\Controllers\AdminController" => [
+			"index" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"category" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"createCategory" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"updateCategory" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"deleteCategory" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"product" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"createProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"updateProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"deleteProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"user" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"createUser" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"updateUser" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"deleteUser" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"order" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"createOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"updateOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"deleteOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"login" => [ "!method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/index.html"],
+			"logout" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ]
+		]
 	];
 ?>

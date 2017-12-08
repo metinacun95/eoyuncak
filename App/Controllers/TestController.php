@@ -27,9 +27,13 @@
 							echo json_encode(["categoryGroup" => $categoryGroup]);
 						}
 						else{
-							echo json_encode([]);
+							$productTypes = $p->getProductTypes($sub);
+							echo json_encode(["productTypes" => $productTypes]);
 						}
 					}
+				}
+				else if($i == "getDetails"){
+					
 				}
 			}
 		}
