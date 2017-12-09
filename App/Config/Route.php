@@ -35,23 +35,15 @@
 			"admin/createProduct.html" => "App\Controllers\AdminController@createProduct",
 			"admin/createUser.html" => "App\Controllers\AdminController@createUser",
 			"admin/createOrder.html" => "App\Controllers\AdminController@createOrder",
-			"admin/updateCategory/(.*?).html" => "App\Controllers\AdminController@updateCategory -> { id => {1}}",
-			"admin/updateUser/(.*?).html" => "App\Controllers\AdminController@updateUser -> { id => {1}}",
-			"admin/updateOrder/(.*?).html" => "App\Controllers\AdminController@updateOrder -> { id => {1}}",
-			"admin/updateProduct/(.*?).html" => "App\Controllers\AdminController@updateProduct -> { id => {1}}",
-			"admin/deleteCategory/(.*?).html" => "App\Controllers\AdminController@deleteCategory",
-			"admin/deleteProduct/(.*?).html" => "App\Controllers\AdminController@deleteProduct",
-			"admin/deleteUser/(.*?).html" => "App\Controllers\AdminController@deleteUser",
-			"admin/deleteOrder/(.*?).html" => "App\Controllers\AdminController@deleteOrder"
-			//"/" => "App\Controllers\HomeController@index"
-			/*"Kategori/(.*?)/Sayfa/(.*?).html" => "App\Controllers\KategoriController@sayfa -> {kategoriSefLink => [1], sayfaId => [2]}",
-			"Kategori/(.*?).html" => "App\Controllers\KategoriController@index -> {kategoriSefLink => [1]}",
-			"Cicek/(.*?).html" => "App\Controllers\CicekController@index -> {cicekSefLink => [1]}",
-			"Urunler/Sayfa/(.*?).html" => "App\Controllers\KategoriController@hepsiSayfa -> {sayfaId => [1]}",
-			"cicekAdmin/kategoriDuzenle/(.*?)" =>"App\Controllers\AdminController@kategoriDuzenle2 -> {kategoriId => [1]}",
-			"cicekAdmin/kategoriSil/(.*?)" =>"App\Controllers\AdminController@kategoriSil -> {kategoriId => [1]}",
-			"cicekAdmin/cicekDuzenle/(.*?)" =>"App\Controllers\AdminController@cicekDuzenle2 -> {cicekId => [1]}",
-			"cicekAdmin/cicekSil/(.*?)" =>"App\Controllers\AdminController@cicekSil -> {cicekId => [1]}"*/
+			"admin/updateCategory/(.*?).html" => "App\Controllers\AdminController@updateCategory -> { id => [1]}",
+			"admin/updateUser/(.*?).html" => "App\Controllers\AdminController@updateUser -> { id => [1]}",
+			"admin/updateOrder/(.*?).html" => "App\Controllers\AdminController@updateOrder -> { id => [1]}",
+			"admin/updateProduct/(.*?).html" => "App\Controllers\AdminController@updateProduct -> { id => [1]}",
+			"admin/deleteCategory/(.*?).html" => "App\Controllers\AdminController@deleteCategory -> { id => [1]}",
+			"admin/deleteProduct/(.*?).html" => "App\Controllers\AdminController@deleteProduct -> { id => [1]}",
+			"admin/deleteUser/(.*?).html" => "App\Controllers\AdminController@deleteUser -> { id => [1]}",
+			"admin/deleteOrder/(.*?).html" => "App\Controllers\AdminController@deleteOrder -> { id => [1]}"
+			
 			
 		],
 		"P404" => "App\Controllers\P404@index"
