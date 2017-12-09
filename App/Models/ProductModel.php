@@ -13,7 +13,12 @@
 			return $this->db->insertId();
 		}
 		function newCategory($categoryName = "",$sub = 0){
-			
+			return $this->db->table("kategoriler")->insert([
+				"KategoriAdi" => $categoryName,
+				"Alt" => $sub,
+				"Sef" => sefLink($categoryName),
+				"Sira" => 0
+			]);
 		}
 		function getCategory($categoryId = 0){
 			return $this->db->table("kategoriler")->select("*")->where("KategoriId",$categoryId)->get();
