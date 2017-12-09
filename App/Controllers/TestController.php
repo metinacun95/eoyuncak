@@ -5,7 +5,8 @@
 	use PHPMailer;
 	class TestController extends Controller{
 		function newProduct(){
-			$this->view("Test/NewProduct",["link" => $this->link]);
+			$p = new ProductModel;
+			$this->view("Test/NewProduct",["link" => $this->link,"p" => $p]);
 		}
 		function newProductAjax(){
 			if($_POST){
@@ -32,8 +33,19 @@
 						}
 					}
 				}
-				else if($i == "getDetails"){
-					
+				else if($this->request->get("i")== "getDetails"){
+					$productType = intval($this->request->get("productType"));
+					$getDetails = $p->getProductDetails($productType);
+					$details = [];
+					foreach($getDetails as $d){
+						if($d->OzellikTip == 0){
+							$details[] = ["id" => $d->OzellikId,"ad" => $d->OzellikAdi,"tip" => 0,"cins" => $d->Cins];
+						}
+						else if($d->OzellikTip == 1){
+							$details[] = ["id" => $d->OzellikId,"ad" => $d->OzellikAdi,"tip" => 1,"cins" => $d->Cins,"ozellikler" => $p->getProductTypeDetailList($d->OzellikId)];
+						}
+					}
+					echo json_encode($details);
 				}
 			}
 		}

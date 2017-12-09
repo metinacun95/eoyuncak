@@ -13,9 +13,10 @@ $(document).ready(function(){
 				for(var j=0; j<categoryGroup.length;j++){
 					addPreend = addPreend + '<option value="'+categoryGroup[j].KategoriId+'">'+categoryGroup[j].KategoriAdi+'</option>';
 				}
-				addPreend = addPreend+ "</select>";
+				addPreend = addPreend+ "</select> <br />";
 				add = addPreend + add;
 			}
+			add = "KATEGORİLER : <br />" + add;
 			$(".kategoriler").html(add);
 		}
 	});
@@ -45,21 +46,22 @@ function cat(obj){
 								
 							}
 						});
-						addAppend = addAppend+ "</select>";
+						addAppend = addAppend+ "</select> <br />";
 						add = add + addAppend;
 					}
+					add = "KATEGORİLER : <br />" + add;
 					$(".kategoriler").html(add);
 					saveSelecteds(result);
 				}
 			}
 			else if(typeof(result["productTypes"]) != "undefined"){
 				var productTypes = result["productTypes"];
-				var add = '<select onChange="selectType(this)">';
+				var add = 'Ürün Tipler : <br /> <select onChange="selectType(this)">';
 				add = add + '<option value="0">Seçiniz</option>'
 				for(var i=0; i<productTypes.length;i++){
 					add = add + '<option value="'+productTypes[i]["UrunTipId"]+'">'+productTypes[i]["UrunTipAdi"]+'</option>';
 				}
-				add = add + "</select>";
+				add = add + "</select> <br />";
 				$(".urunTipler").html(add);
 			}
 		},
@@ -84,10 +86,24 @@ function selectType(obj){
 	$.ajax({
 		"type":"post",
 		"url":link+"tnewProductAjax",
-		"data":{"i":"getDetails","productTypeId":obj.val()},
+		"data":{"i":"getDetails","productType":obj.val()},
 		"dataType":"json",
 		"success":function(result){
-			console.log(result);
+			var add = "Özellikler : <br />";
+			for(var i=0;i<result.length;i++){
+				if(result[i]["tip"] == 0){
+					add = add + result[i]["ad"]+' : <input type="text" name="detail-'+result[i]["id"]+'" placeholder="'+result[i]["cins"]+'" /> <br />';
+				}
+				else if(result[i]["tip"] == 1){
+					add = add + result[i]["ad"] + '<select name="detail-'+result[i]["id"]+'">';
+					add = add + '<option value="0">'+result[i]["ad"]+' Seçin</option>';
+					for(var j = 0; j<result[i]["ozellikler"].length;j++){
+						add = add + '<option value="'+result[i]["ozellikler"][j].UrunOzellikListeId+'">'+result[i]["ozellikler"][j].Ozellik+'</option>';
+					}
+					add = add +"</select> <br />";
+				}
+			}
+			$(".ozellikler").html(add);
 		}
 	});
 }

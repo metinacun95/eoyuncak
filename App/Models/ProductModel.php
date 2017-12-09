@@ -30,10 +30,10 @@
 			return $this->db->table("uruntipler")->select("*")->where("KategoriId",$categoryId)->getAll();
 		}
 		function getProductDetails($productType = 0){
-			return $this->db->table("urunozellikler")->select("*")->where("UrunTipId",$productType)->where("Alt",0)->getAll();
+			return $this->db->table("urunozellikler")->select("*")->where("UrunTipId",$productType)->getAll();
 		}
-		function getProductDetailSub($productType = 0,$productDetailId = 0){
-			return $this->db->table("urunozellikler")->select("*")->where("UrunTipId",$productType)->where("Alt",$productDetailId)->getAll();
+		function getProductTypeDetailList($detailId = 0){
+			return $this->db->table("urunozellikliste")->select("*")->where("UrunOzellikId",$detailId)->getAll();
 		}
 		function updateProductStandart($productId = 0,$userId = 0,$data=[]){
 			$this->db->table("urunler")->where("UrunId",$productId)->where("UyeId",$userId)->update($data);
@@ -104,6 +104,17 @@
 			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
 			get();
 		}
+		function getAll(){
+			return $this->
+			db->
+			table("urunler")->
+			select("*")->
+			innerJoin("urunozellikler","urunler.UrunTip","urunozellikler.UrunTipId")->
+			innerJoin("urunozellikdegerler","urunler.UrunId","urunozellikdegerler.UrunId")->
+			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
+			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
+			getAll();
+		}
 		function insertImageToProduct($imgFile = "",$productId = 0){
 			$newFileName = $this->randomFileName();
 			if(file_exists($imgFile)){
@@ -145,6 +156,10 @@
 				return randomFileName();
 			}
 			return $Text;
+		}
+		
+		function deleteCategory($categoryId = 0){
+			
 		}
 	}
 ?>
