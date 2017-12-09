@@ -8,12 +8,17 @@
 		public function head($settings = []){
 			$data = [
 				"link" => $this->link,
-				"js" => [],
+				"js" => [
+					"jquery-1.10.2.js",
+					"bootstrap.js",
+					"jquery.metisMenu.js",
+					"custom.js",
+				],
 				"css" => [
-					"css/bootstrap.css",
-					"css/font-awesome.css",
-					"css/basic.css",
-					"css/custom.css"
+					"bootstrap.css",
+					"font-awesome.css",
+					"basic.css",
+					"custom.css"
 				]
 			];
 			foreach($settings as $key => $value){

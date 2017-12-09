@@ -13,7 +13,8 @@
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"tnewProduct.html" => "App\Controllers\TestController@newProduct",
 			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax",
-			"admin" => "App\Controllers\AdminController@index"
+			"admin" => "App\Controllers\AdminController@index",
+			"admin/" => "App\Controllers\AdminController@index"
 		],
 		"preg_matches" =>[
 			"product/(.*?).html" => "App\Controllers\ProductController@product -> {productSef => [1]}",

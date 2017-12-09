@@ -7,12 +7,12 @@
 <?php
 		for($i = 0; $i<count($js); $i++){
 		?>
-	<script type="text/javascript" src="<?php echo $link."admin_assets/".$js[$i]; ?>?v=<?php echo time(); ?>"></script>
+	<script type="text/javascript" src="<?php echo $link."admin_assets/js/".$js[$i]; ?>?v=<?php echo time(); ?>"></script>
 <?php
 		}
 		for($i = 0; $i<count($css); $i++){
 		?>
-	<link rel="stylesheet" href="<?php echo $link."admin_assets/".$css[$i]; ?>?v=<?php echo time(); ?>" />
+	<link rel="stylesheet" href="<?php echo $link."admin_assets/css/".$css[$i]; ?>?v=<?php echo time(); ?>" />
 <?php
 		}
 	?>
