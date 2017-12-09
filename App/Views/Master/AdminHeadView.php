@@ -38,7 +38,7 @@
             <div class="header-right">
                 <a href="mesajlar.php" class="btn btn-info" title="Yeni Mesaj"><b> 5 </b><i class="fa fa-envelope-o fa-2x"></i></a>
                 <a href="#" class="btn btn-primary" title="#"><b>0 </b><i class="fa fa-bars fa-2x"></i></a>
-                <a href="cikis.php" class="btn btn-danger" title="Çıkış"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+                <a href="<?php echo $link; ?>admin/logout.html" class="btn btn-danger" title="Çıkış"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
             </div>
         </nav>
@@ -59,19 +59,19 @@
 
                     </li>
 					<li>
-                        <a class="active-menu" href="index.php"><i class="fa fa-home "></i>Anasayfa</a>
+                        <a class="active-menu" href="<?php echo $link; ?>admin/"><i class="fa fa-home "></i>Anasayfa</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-reply-all "></i>Siteye Git</a>
+                        <a href="<?php echo $link; ?>"><i class="fa fa-reply-all "></i>Siteye Git</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-puzzle-piece "></i>Kataloglar<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-puzzle-piece "></i>Kategoriler<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="katalog_ekle.php"><i class="fa fa-plus"></i>Yeni Katalog Ekle</a>
+                                <a href="<?php echo $link; ?>admin/createCategory.html"><i class="fa fa-plus"></i>Yeni Kategori Ekle</a>
                             </li>
                             <li>
-                                <a href="kataloglar.php"><i class="fa fa-cogs "></i>Katalog Düzenle/Sil</a>
+                                <a href="<?php echo $link; ?>admin/category.html"><i class="fa fa-cogs "></i>Kategori Düzenle/Sil</a>
                             </li>
                         </ul>
                     </li>
@@ -79,33 +79,26 @@
                         <a href="#"><i class="fa fa-th "></i>Ürünler<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="urun_ekle.php"><i class="fa fa-plus"></i>Yeni Ürün Ekle</a>
+                                <a href="<?php echo $link; ?>admin/createProduct.html"><i class="fa fa-plus"></i>Yeni Ürün Ekle</a>
                             </li>
                             <li>
-                                <a href="urunler.php"><i class="fa fa-cogs "></i>Ürün Düzenle/Sil</a>
+                                <a href="<?php echo $link; ?>admin/product.html"><i class="fa fa-cogs "></i>Ürün Düzenle/Sil</a>
                             </li>
                         </ul>
                     </li>
-                     <li>
-                        <a href="#"><i class="fa fa-list-alt "></i>Kategoriler<span class="fa arrow"></span></a>
-                         <ul class="nav nav-second-level">
-                            <li>
-                                <a href="kategori_ekle.php"><i class="fa fa-plus"></i>Yeni Kategori Ekle</a>
-                            </li>
-                            <li>
-                                <a href="kategoriler.php"><i class="fa fa-cogs "></i>Kategori Düzenle/Sil</a>
-                            </li>                                                   
-                        </ul>
-                    </li>
+                     
                    <li>
                         <a href="#"><i class="fa fa-windows "></i>Kurumsal<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="hakkimizda.php"><i class="fa fa-flickr"></i>Hakkımizda</a>
+                                <a href="hakkimizda.php"><i class="fa fa-flickr"></i>Hakkımızda</a>
                             </li>                       
                         </ul>
                     </li>
-					<li>
+                    <li>
+                        <a href="<?php echo $link; ?>admin/order.html"><i class="fa fa-phone "></i>Siparişler</a>  
+                    </li>
+                    <li>
                         <a href="iletisim.php"><i class="fa fa-phone "></i>İletişim Bilgileri</a>  
                     </li>
                      <li>
