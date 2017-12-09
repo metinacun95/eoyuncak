@@ -83,6 +83,11 @@ function selectType(obj){
 	var obj = $(obj);
 	$.ajax({
 		"type":"post",
-		"url":link+"tnewProductAjax"
+		"url":link+"tnewProductAjax",
+		"data":{"i":"getDetails","productTypeId":obj.val()},
+		"dataType":"json",
+		"success":function(result){
+			console.log(result);
+		}
 	});
 }
