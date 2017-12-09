@@ -159,7 +159,15 @@
 		}
 		
 		function deleteCategory($categoryId = 0){
-			
+			$products = $this->db->table("urunler")->select("UrunId")->where("KategoriId",$categoryId)->getAll();
+			foreach($products as $p){
+				$this->delete($p->UrunId);
+			}
+			$subCategories = $this->db->table("kategoriler")->select("KategoriId")->where("Alt",$categoryId)->getAll();
+			foreach($subCategories as $sub){
+				$this->deleteCategory($sub->KategoriId);
+			}
+			$this->db->table("kategoriler")->where("KategoriId",$categoryId)->delete();
 		}
 	}
 ?>
