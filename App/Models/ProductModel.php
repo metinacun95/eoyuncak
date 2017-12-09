@@ -21,7 +21,7 @@
 		function getCategories($sub = 0){
 			return $this->db->table("kategoriler")->select("*")->where("Alt",$sub)->orderBy("sira","ASC")->getAll();
 		}
-		function getProducyTypes($categoryId = 0){
+		function getProductTypes($categoryId = 0){
 			return $this->db->table("uruntipler")->select("*")->where("KategoriId",$categoryId)->getAll();
 		}
 		function getProductDetails($productType = 0){

@@ -15,6 +15,9 @@
 		<div class="kategoriler">
 			
 		</div>
+		<div class="urunTipler">
+			
+		</div>
 		<div class="ozellikler">
 			
 		</div>
