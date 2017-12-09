@@ -3,6 +3,7 @@
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
 	use App\Models\IOModel;
+	use App\Models\ProductModel;
 	use GUMP;
 	use PHPMailer;
 	class AdminController extends Controller{ // HomeController@index
@@ -14,11 +15,24 @@
 		public function index(){
 			$this->master->head(["title" => "Admin Anasayfa"]);
 		}
-		public function category(){}
+		public function category(){
+			$this->master->head(["title" => "Admin-Kategoriler"]);
+			$p = new ProductModel;
+			$categories = $p->getCategories();
+			return $this->view("Admin/Categories", ["categories"  => $categories, "link" => $this->link, "p" => $p]);
+		}
 		public function createCategory(){}
 		public function updateCategory(){}
-		public function deleteCategory(){}
-		public function product(){}
+		public function deleteCategory(){
+			$p = new ProductModel;
+			return $p->deleteCategory(intval($this->params["id"]));
+		}
+		public function product(){
+			$this->master->head(["title" => "Admin-Ürünler"]);
+			$p = new ProductModel;
+			$products = $p->getAll();
+			return $this->view("Admin/Products", ["products"  => $product, "link" => $this->link]);
+		}
 		public function createProduct(){}
 		public function updateProduct(){}
 		public function deleteProduct(){}
