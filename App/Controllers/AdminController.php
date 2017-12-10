@@ -21,25 +21,43 @@
 			$categories = $p->getCategories();
 			return $this->view("Admin/Categories", ["categories"  => $categories, "link" => $this->link, "p" => $p]);
 		}
+
 		public function createCategory(){}
 		public function updateCategory(){}
+
 		public function deleteCategory(){
 			$p = new ProductModel;
-			return $p->deleteCategory(intval($this->params["id"]));
+			$p->deleteCategory(intval($this->params["id"]));
+			$this->redirect("admin/category.html");
 		}
 		public function product(){
 			$this->master->head(["title" => "Admin-Ürünler"]);
 			$p = new ProductModel;
 			$products = $p->getAll();
-			return $this->view("Admin/Products", ["products"  => $product, "link" => $this->link]);
+			return $this->view("Admin/Products", ["products"  => $products, "link" => $this->link, "p" => $p]);
 		}
 		public function createProduct(){}
 		public function updateProduct(){}
-		public function deleteProduct(){}
-		public function user(){}
+
+		public function deleteProduct(){
+			$p = new ProductModel;
+			$p->delete(intval($this->params["id"]), $_SESSION["userId"]);
+			$this->redirect("admin/product.html");
+		}
+		public function user(){
+			$this->master->head(["title" => "Admin-Üyeler"]);
+			$u = new UserModel;
+			$users = $u->getAll();
+			return $this->view("Admin/Users", ["users"  => $users, "link" => $this->link, "u" => $u]);
+		}
 		public function createUser(){}
 		public function updateUser(){}
-		public function deleteUser(){}
+
+		public function deleteUser(){
+			$u = new UserModel;
+			$u->destroy(intval($this->params["id"]));
+			$this->redirect("admin/user.html");
+		}
 		public function order(){}
 		public function createOrder(){}
 		public function updateOrder(){}

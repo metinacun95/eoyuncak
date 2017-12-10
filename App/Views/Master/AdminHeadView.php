@@ -86,6 +86,7 @@
                             </li>
                         </ul>
                     </li>
+
                      
                    <li>
                         <a href="#"><i class="fa fa-windows "></i>Kurumsal<span class="fa arrow"></span></a>
@@ -97,6 +98,9 @@
                     </li>
                     <li>
                         <a href="<?php echo $link; ?>admin/order.html"><i class="fa fa-phone "></i>Siparişler</a>  
+                    </li>
+                     <li>
+                        <a href="<?php echo $link; ?>admin/user.html"><i class="fa fa-users "></i>Üyeler</a>  
                     </li>
                     <li>
                         <a href="iletisim.php"><i class="fa fa-phone "></i>İletişim Bilgileri</a>  
