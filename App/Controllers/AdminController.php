@@ -3,6 +3,7 @@
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
 	use App\Models\IOModel;
+	use App\Models\OrderModel;
 	use App\Models\ProductModel;
 	use GUMP;
 	use PHPMailer;
@@ -58,10 +59,20 @@
 			$u->destroy(intval($this->params["id"]));
 			$this->redirect("admin/user.html");
 		}
-		public function order(){}
+		public function order(){
+			$this->master->head(["title" => "Admin-Siparişler"]);
+			$o = new OrderModel;
+			$orders = $o->getAll();
+			return $this->view("Admin/Orders", ["orders"  => $users, "link" => $this->link, "o" => $o]);
+		}
 		public function createOrder(){}
 		public function updateOrder(){}
-		public function deleteOrder(){}
+
+		public function deleteOrder(){
+			$o = new OrderModel;
+			$o->destroy(intval($this->params["id"]));
+			$this->redirect("admin/order.html");
+		}
 		function login(){
 			if($_POST){
 				$IOModel = new IOModel;
@@ -82,7 +93,15 @@
 			}
 			$this->view("Admin/Login",["link" => $this->link]);
 		}
-		function logout(){}
+		function logout(){
+			if(isset($_SESSION["userId"],$_SESSION["rolId"],$_SESSION["userName"],$_SESSION["md5"])){
+				unset($_SESSION["userId"]);
+				unset($_SESSION["rolId"]);
+				unset($_SESSION["userName"]);
+				unset($_SESSION["md5"]);
+			}
+			$this->redirect($this->link."admin/login.html");
+		}
 		function isLogin(){
 			if(isset($_SESSION["adminLogin"])){
 				return true;
