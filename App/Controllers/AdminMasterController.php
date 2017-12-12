@@ -12,7 +12,7 @@
 					"jquery-1.10.2.js",
 					"bootstrap.js",
 					"jquery.metisMenu.js",
-					"custom.js",
+					//"custom.js",
 				],
 				"css" => [
 					"bootstrap.css",

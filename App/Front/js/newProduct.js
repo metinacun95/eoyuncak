@@ -151,6 +151,7 @@ function inputKontrol(){
 	return !kontrol;
 }
 function kaydet(){
+	console.log("dsda");
 	if(inputKontrol()){
 		$(document).ready(function(){
 			var data = $("form").serialize();
@@ -160,12 +161,17 @@ function kaydet(){
 				"data":data,
 				"dataType":"json",
 				success:function(result){
+					console.log(result);
 					if(result.error == 0){
 						alert("Ürün başarıyla eklendi");
+						window.location = link+"admin/uploadImageProduct/"+result.productId+".html";
 					}
 					else{
 						alert(result.errorMessage);
 					}
+				},
+				error:function(result){
+					console.log(result);
 				}
 			});
 		});

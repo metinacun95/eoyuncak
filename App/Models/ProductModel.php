@@ -5,8 +5,7 @@
 	use IOModel as io;
 	class ProductModel extends Model{
 		function create(){
-			$io = new IOModel();
-			$userId = 3;
+			$userId = $_SESSION["userId"];
 			$newProduct = $this->db->table("urunler")->insert([
 				"UyeId" => $userId
 			]);
@@ -109,11 +108,7 @@
 			db->
 			table("urunler")->
 			select("*")->
-			where("UrunId",$productId)->
-			innerJoin("urunozellikler","urunler.UrunTip","urunozellikler.UrunTipId")->
-			innerJoin("urunozellikdegerler","urunler.UrunId","urunozellikdegerler.UrunId")->
-			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
-			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
+			where("urunler.UrunId",$productId)->
 			get();
 		}
 		function getAll(){
@@ -127,10 +122,10 @@
 			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
 			getAll();
 		}
-		function insertImageToProduct($imgFile = "",$productId = 0){
-			$newFileName = $this->randomFileName();
+		function insertImageToProduct($productId = 0,$imgFile = ""){
+			$newFileName = $this->randomFileName().".png";
 			if(file_exists($imgFile)){
-				copy($imgFile,$newFileName);
+				copy($imgFile,PATH."/App/Front/images/productImages/".$newFileName);
 				$this->db->table("urunresimler")->insert(["UrunId" => $productId,"ResimYol" => $newFileName]);
 				if($this->db->insertId() > 0){
 					return [
@@ -148,7 +143,7 @@
 				"errorMessage" => "Resim bulunamadı"
 			];
 		}
-		function randomFileName(){
+		function randomFileName($Size = 0){
 			$abc = "ABCDEFGHIJKLMNOPRSTUVYZWXQ";
 			$numbers = "0123456789";
 			$Text = "";

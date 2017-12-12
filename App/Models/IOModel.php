@@ -41,11 +41,15 @@
 
 		}
 		function adminLogin($username,$password){
-			$adminFind = $this->db->table("uyeler")->select("UyeId")->where("KullaniciAdi",$username)->where("Parola",md5($password))->where("RolId",1)->getAll();
+			$adminFind = $this->db->table("uyeler")->select("UyeId")->where("KullaniciAdi",$username)->where("Parola",md5($password))->where("RolId",1)->get();
 			/*echo "<pre>";
 			var_dump($adminFind);
 			exit;*/
 			if(count($adminFind) > 0){
+				$_SESSION['userId'] = $adminFind->UyeId;
+				$_SESSION['rolId'] = $adminFind->RolId;
+				$_SESSION['userName'] = $username;
+				$_SESSION["md5"] = md5($u->UyeId.$u->RolId.$username);
 				$_SESSION["adminLogin"] = true;
 				return true;
 			}
@@ -71,6 +75,9 @@
 					}
 			}
 			return false;
+		}
+		function getId(){
+			return $_SESSION["userId"];
 		}
 	}
 ?>

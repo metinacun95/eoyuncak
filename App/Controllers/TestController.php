@@ -111,7 +111,7 @@
 							"KategoriId" => toHtmlChars($this->request->get("KategoriId")),
 							"UrunTip" => toHtmlChars($this->request->get("UrunTip")),
 						];
-						$p->updateProductStandart($newProductId,3,$data);
+						$p->updateProductStandart($newProductId,$_SESSION["userId"],$data);
 						$details = [];
 						foreach($_POST as $key => $value){
 							if(substr($key,0,strlen("detail")) == "detail"){
@@ -123,7 +123,9 @@
 								}
 							}
 						}
-						echo json_encode($p->updateProductAdvanced($newProductId,3,$details));
+						$encodeArray = $p->updateProductAdvanced($newProductId,$_SESSION["userId"],$details);
+						$encodeArray["productId"] = $newProductId;
+						echo json_encode($encodeArray);
 					}
 				}
 			}

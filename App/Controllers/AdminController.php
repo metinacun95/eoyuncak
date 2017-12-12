@@ -23,7 +23,27 @@
 			return $this->view("Admin/Categories", ["categories"  => $categories, "link" => $this->link, "p" => $p]);
 		}
 
-		public function createCategory(){}
+		public function createCategory(){
+			$p = new ProductModel;
+			if($_POST){
+				$catId = 0;
+				$catDizi = [];
+				foreach($_POST["KategoriId"] as $c){
+					$catDizi[] = $c;
+				}
+				for($i = count($catDizi) - 1;$i>=0;$i--){
+					if($catDizi[$i] != 0){
+						$catId = intval($catDizi[$i]);
+						break;
+					}
+				}
+				$yeni = toHtmlChars($this->request->yeniKategori);
+				$p->newCategory($yeni,$catId);
+				return $this->redirect("admin/category.html");
+			}
+			$this->master->head(["title" => "Admin-Kategori Ekle"]);
+			return $this->view("Admin/AddCategory", ["link" => $this->link]);
+		}
 		public function updateCategory(){}
 
 		public function deleteCategory(){
@@ -40,8 +60,38 @@
 		public function createProduct(){
 			$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
 			$p = new ProductModel;
-			$products = $p->getAll();
 			return $this->view("Admin/NewProduct", ["link" => $this->link]);
+		}
+		function uploadImageProduct(){
+			$id = intval($this->params["id"]);
+			$p = new ProductModel;
+			$getProduct = $p->get($id);
+			if(count($getProduct) > 0){
+				if($getProduct->UyeId == $_SESSION["userId"]){
+					if($_FILES){
+						if(isset($_FILES["urunResim"])){
+							$urunResim = $_FILES["urunResim"];
+							if($urunResim["type"] == "image/jpeg" or $urunResim["type"] == "image/png"){
+								$p->insertImageToProduct($id,$urunResim["tmp_name"]);
+								return $this->redirect("admin/product.html");
+							}else{
+								$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
+								return $this->view("Admin/UploadImageProduct", ["link" => $this->link,"error" => 1]);
+							}
+						}
+					}
+					else{
+						$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
+						return $this->view("Admin/UploadImageProduct", ["link" => $this->link]);
+					}
+				}
+				else{
+					return $this->redirect("");
+				}
+			}
+			else{
+				return $this->redirect("");
+			}
 		}
 		public function updateProduct(){}
 
@@ -105,7 +155,7 @@
 				unset($_SESSION["userName"]);
 				unset($_SESSION["md5"]);
 			}
-			$this->redirect($this->link."admin/login.html");
+			$this->redirect("admin/login.html");
 		}
 		function isLogin(){
 			if(isset($_SESSION["adminLogin"])){

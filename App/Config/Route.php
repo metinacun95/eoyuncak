@@ -43,7 +43,8 @@
 			"admin/deleteCategory/(.*?).html" => "App\Controllers\AdminController@deleteCategory -> { id => [1]}",
 			"admin/deleteProduct/(.*?).html" => "App\Controllers\AdminController@deleteProduct -> { id => [1]}",
 			"admin/deleteUser/(.*?).html" => "App\Controllers\AdminController@deleteUser -> { id => [1]}",
-			"admin/deleteOrder/(.*?).html" => "App\Controllers\AdminController@deleteOrder -> { id => [1]}"
+			"admin/deleteOrder/(.*?).html" => "App\Controllers\AdminController@deleteOrder -> { id => [1]}",
+			"admin/uploadImageProduct/(.*?).html" => "App\Controllers\AdminController@uploadImageProduct -> { id => [1]}",
 			
 			
 		],
