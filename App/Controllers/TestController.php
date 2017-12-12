@@ -3,6 +3,7 @@
 	use App\Controllers\MasterController;
 	use App\Models\ProductModel;
 	use PHPMailer;
+	use GUMP;
 	class TestController extends Controller{
 		function newProduct(){
 			$p = new ProductModel;
@@ -87,6 +88,45 @@
 			$addGroup["selected"] = -1;
 			array_push($group,$addGroup);
 			return $group;
+		}
+		function addNewProduct(){
+			if($_POST){
+				$validate = GUMP::is_valid($_POST,[
+					"Baslik" => "required|max_len,100",
+					"Aciklama" => "required|max_len,10000",
+					"UrunFiyat" => "required|numeric",
+					"Stok" => "required|numeric",
+					"KategoriId" => "required|numeric",
+					"UrunTip" => "required|numeric",
+				]);
+				if($validate === true){
+					$p = new ProductModel;
+					$newProductId = $p->create();
+					if($newProductId > 0){
+						$data = [
+							"Baslik" => toHtmlChars($this->request->get("Baslik")),
+							"Aciklama" => toHtmlChars($this->request->get("Aciklama")),
+							"UrunFiyat" => toHtmlChars($this->request->get("UrunFiyat")),
+							"Stok" => toHtmlChars($this->request->get("Stok")),
+							"KategoriId" => toHtmlChars($this->request->get("KategoriId")),
+							"UrunTip" => toHtmlChars($this->request->get("UrunTip")),
+						];
+						$p->updateProductStandart($newProductId,3,$data);
+						$details = [];
+						foreach($_POST as $key => $value){
+							if(substr($key,0,strlen("detail")) == "detail"){
+								$detailEx = explode("-",$key);
+								if(isset($detailEx[1])){
+									$newKey = intval($detailEx[1]);
+									$newValue = toHtmlChars($value);
+									$details[$newKey] = $newValue;
+								}
+							}
+						}
+						echo json_encode($p->updateProductAdvanced($newProductId,3,$details));
+					}
+				}
+			}
 		}
 	}
 ?>

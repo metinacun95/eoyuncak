@@ -6,7 +6,7 @@
 	class ProductModel extends Model{
 		function create(){
 			$io = new IOModel();
-			$userId = $io->getId();
+			$userId = 3;
 			$newProduct = $this->db->table("urunler")->insert([
 				"UyeId" => $userId
 			]);
@@ -37,24 +37,32 @@
 		}
 		function updateProductStandart($productId = 0,$userId = 0,$data=[]){
 			$this->db->table("urunler")->where("UrunId",$productId)->where("UyeId",$userId)->update($data);
+			return [
+				"error" => 0,
+				"errorMessage" => "Bilgiler Güncellendi"
+			];
 		}
 		function updateProductAdvanced($productId = 0,$userId = 0,$data){
-			$control = $this->db->table("urunler")->select("UrunId")->where("UrunId",$productId)->where("UyeId",$userId)->get();
+			$control = $this->db->table("urunler")->select("UrunId,UrunTip")->where("UrunId",$productId)->where("UyeId",$userId)->get();
 			if(count($control) > 0){
 				foreach($data as $key => $value){
-					$selectProductDetail = $this->db->table("urunozellikler")->select("*")->where("OzellikId",intval($key))->where("UrunTipId",$control->UrunTip)->get();
+					$selectProductDetail = $this->db->table("urunozellikler")->select("*")->where("OzellikId",intval($key))->where("UrunTipId",$control->UrunTip)->getAll();
 					if(count($selectProductDetail) > 0){
-						$selectProductValue = $this->db->table("urunozellikdegerler")->select("OzellikDegerId")->where("UrunId",$productId)->where("OzellikId",intval($key));
-						if(count($selectProductValue) > 0){
-							$this->db->table("urunozellikdegerler")->where("UrunId",$productId)->where("OzellikId",intval($key))->update(["OzellikDeger" => $value]);
+						foreach($selectProductDetail as $selectedDetail){
+							$selectProductValue = $this->db->table("urunozellikdegerler")->select("OzellikDegerId")->where("UrunId",$productId)->where("OzellikId",intval($key))->get();
+							if($selectedDetail->OzellikTip == 0){
+								$newValue = toHtmlChars($value);
+							}
+							else if($selectedDetail->OzellikTip == 1){
+								$newValue = intval($value);
+							}
+							if(count($selectProductValue) > 0){
+								$this->db->table("urunozellikdegerler")->where("UrunId",$productId)->where("OzellikId",intval($key))->update(["OzellikDeger" => $newValue]);
+							}
+							else{
+								$this->db->table("urunozellikdegerler")->insert(["UrunId" => $productId,"OzellikId" => $key, "OzellikDeger" => $newValue]);
+							}
 						}
-						else{
-							$this->db->table("urunozellikdegerler")->insert(["UrunId" => $productId,"OzellikId" => $key, "OzellikDeger" => $value]);
-						}
-						return [
-							"error" => 0,
-							"errorMessage" => "Bilgiler Güncellendi"
-						];
 					}
 					else{
 						return [
@@ -63,6 +71,10 @@
 						];
 					}
 				}
+				return [
+						"error" => 0,
+						"errorMessage" => "Bilgiler Güncellendi"
+					];
 			}
 			else{
 				return [
@@ -156,8 +168,7 @@
 				return randomFileName();
 			}
 			return $Text;
-		}
-		
+		}		
 		function deleteCategory($categoryId = 0){
 			$products = $this->db->table("urunler")->select("UrunId")->where("KategoriId",$categoryId)->getAll();
 			foreach($products as $p){

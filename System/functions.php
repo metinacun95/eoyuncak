@@ -118,8 +118,7 @@ return array(");
 			}
 		}
 	}
-	function sefLink($url)
-	{
+	function sefLink($url){
 		$url = trim($url);
 		$find = array('<b>', '</b>');
 		$url = str_replace ($find, '', $url);

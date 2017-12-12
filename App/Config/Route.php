@@ -13,6 +13,7 @@
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"tnewProduct.html" => "App\Controllers\TestController@newProduct",
 			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax",
+			"addNewProduct.html" => "App\Controllers\TestController@addNewProduct",
 			"admin" => "App\Controllers\AdminController@index",
 			"admin/" => "App\Controllers\AdminController@index"
 		],

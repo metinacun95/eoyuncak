@@ -37,7 +37,12 @@
 			$products = $p->getAll();
 			return $this->view("Admin/Products", ["products"  => $products, "link" => $this->link, "p" => $p]);
 		}
-		public function createProduct(){}
+		public function createProduct(){
+			$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
+			$p = new ProductModel;
+			$products = $p->getAll();
+			return $this->view("Admin/NewProduct", ["link" => $this->link]);
+		}
 		public function updateProduct(){}
 
 		public function deleteProduct(){
