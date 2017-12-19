@@ -1,0 +1,1 @@
+<?php // Sepetteki ürünler gösterilecek. Sepetten ürün çıkartılabilmeli, alınacak ürün sayısı artırılabilmeli, ödeme yapılabilmeli. ödeme sayfasından ödeye tıklar tıklamaz ödeme yapıldı kabul edilip devam edeceğiz. ?>

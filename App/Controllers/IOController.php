@@ -5,21 +5,17 @@
 	use GUMP;
 	class IOController extends Controller{ // HomeController@index
 		public $master;
-		function __construct(){
-			parent::__construct();
+		function before(){
 			$this->master = new MasterController;
 		}
 		public function index(){
 			$this->master->head([
-				"title" => "E-Oyuncak - Anasayfa"
+				"title" => "E-Oyuncak - Giriş Yap veya Üye Ol"
 			]);
 			$this->master->end();
 		}
 		function login(){
-			#$u = new UserModel;
-			//$u->create(["KullaniciAdi" => "mustafa220","Parola" => "mustafa","Eposta" => "mustafacolakoglu94@gmail.com"]);
 			if($_POST){
-
 				$IOModel = new IOModel;
 				$validator = GUMP::is_valid($_POST,[
 					"username" => "required",

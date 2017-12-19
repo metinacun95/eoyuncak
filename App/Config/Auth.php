@@ -76,7 +76,7 @@
 			"createOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"updateOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"deleteOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
-			"login" => [ "!method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/index.html"],
+			"login" => [ "method" => "!App\Controllers\AdminController@isLogin","redirect" => "admin/index.html"],
 			"logout" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ]
 		]
 	];

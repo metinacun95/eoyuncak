@@ -36,7 +36,7 @@
             </div>
 
             <div class="header-right">
-                <a href="mesajlar.php" class="btn btn-info" title="Yeni Mesaj"><b> 5 </b><i class="fa fa-envelope-o fa-2x"></i></a>
+                <a href="#" class="btn btn-info" title="Yeni Mesaj"><b> 5 </b><i class="fa fa-envelope-o fa-2x"></i></a>
                 <a href="#" class="btn btn-primary" title="#"><b>0 </b><i class="fa fa-bars fa-2x"></i></a>
                 <a href="<?php echo $link; ?>admin/logout.html" class="btn btn-danger" title="Çıkış"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
@@ -53,7 +53,7 @@
                             <div class="inner-text">
                                 Kullanıcı Adı
                             <br />						
-                                <small>Son Görülme : 01 Ocak 2016 Cuma, 00:00:00</small>
+                                <small>Son Görülme : 12 Aralık 2017 Salı, 00:00:00</small>
                             </div>
                         </div>
 
@@ -92,7 +92,7 @@
                         <a href="#"><i class="fa fa-windows "></i>Kurumsal<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="hakkimizda.php"><i class="fa fa-flickr"></i>Hakkımızda</a>
+                                <a href="#"><i class="fa fa-flickr"></i>Hakkımızda</a>
                             </li>                       
                         </ul>
                     </li>
@@ -103,19 +103,19 @@
                         <a href="<?php echo $link; ?>admin/user.html"><i class="fa fa-users "></i>Üyeler</a>  
                     </li>
                     <li>
-                        <a href="iletisim.php"><i class="fa fa-phone "></i>İletişim Bilgileri</a>  
+                        <a href="#"><i class="fa fa-phone "></i>İletişim Bilgileri</a>  
                     </li>
                      <li>
                         <a href="#"><i class="fa fa-user "></i>Yönetici İşlemleri <span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                            
                              <li>
-                                <a href="sifre_degistir.php"><i class="fa fa-key "></i>Şifre Değiştir</a>
+                                <a href="#"><i class="fa fa-key "></i>Şifre Değiştir</a>
                             </li>                     
                         </ul>
                     </li>
 					<li>
-                        <a href="site_ayarlari.php"><i class="fa fa-cog "></i>Site Ayarları</a>  
+                        <a href="#"><i class="fa fa-cog "></i>Site Ayarları</a>  
                     </li>
                 </ul>
 

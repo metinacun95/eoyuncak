@@ -25,7 +25,7 @@
 			$c = new ProductModel;
 			$io = new IOModel;
 			$data["cats"] = $c->getCategories();
-			$data["login"] = $io->isLogin();
+			$data["isLogin"] = $io->isLogin();
 			$this->view("Master/Head",$data);
 		}
 		public function end(){

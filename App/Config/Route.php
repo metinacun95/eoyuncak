@@ -11,19 +11,18 @@
 			"cart.html" => "App\Controllers\CartController@index",
 			"addcart.html" => "App\Controllers\CartController@addCart",
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
-			"tnewProduct.html" => "App\Controllers\TestController@newProduct",
-			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax",
 			"addNewProduct.html" => "App\Controllers\TestController@addNewProduct",
 			"admin" => "App\Controllers\AdminController@index",
 			"admin/" => "App\Controllers\AdminController@index"
 		],
 		"preg_matches" =>[
 			"product/(.*?).html" => "App\Controllers\ProductController@product -> {productSef => [1]}",
-			"editproduct/(.*?).html" => "App\Controllers\ProductController@editproduct -> {productSef => [1]}",
-			//"deleteproduct/(.*?).html" => "App\Controllers\ProductController@deleteproduct -> {productSef => [1]}",
 			"deletecart/(.*?).html" => "App\Controllers\CartController@deletecart -> { productId => [1] }",
 			"categories.html" => "App\Controllers\CategoryController@index",
 			"category/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => {1} }",
+			
+			
+			
 			"ajaxSearch" => "App\Controllers\AjaxController@search",
 			"ajax" => "App\Controllers\AjaxController@index",
 			"admin/login.html" => "App\Controllers\AdminController@login",

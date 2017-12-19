@@ -175,5 +175,8 @@
 			}
 			$this->db->table("kategoriler")->where("KategoriId",$categoryId)->delete();
 		}
+		function mostPays(){
+			return $this->db->table("urunler")->select("*")->orderBy("urunler.ToplamSatinAlinma","DESC")->limit(15)->innerJoin("urunresimler","urunler.UrunId","urunresimler.UrunId")->getAll();
+		}
 	}
 ?>

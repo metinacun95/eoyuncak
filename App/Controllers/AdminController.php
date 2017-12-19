@@ -130,14 +130,14 @@
 		}
 		function login(){
 			if($_POST){
-				$IOModel = new IOModel;
+				$io = new IOModel;
 				$validator = GUMP::is_valid($_POST,[
 					"username" => "required",
 					"password" => "required"
 				]);
 
 				if($validator === true){
-					$IOModel->adminLogin($this->request->username, $this->request->password);
+					$io->adminLogin($this->request->username, $this->request->password);
 					if($this->isLogin()){
 						$this->redirect('admin');
 					}
@@ -149,11 +149,12 @@
 			$this->view("Admin/Login",["link" => $this->link]);
 		}
 		function logout(){
-			if(isset($_SESSION["userId"],$_SESSION["rolId"],$_SESSION["userName"],$_SESSION["md5"])){
+			if(isset($_SESSION["userId"],$_SESSION["rolId"],$_SESSION["userName"],$_SESSION["md5"],$_SESSION["adminLogin"])){
 				unset($_SESSION["userId"]);
 				unset($_SESSION["rolId"]);
 				unset($_SESSION["userName"]);
 				unset($_SESSION["md5"]);
+				unset($_SESSION["adminLogin"]);
 			}
 			$this->redirect("admin/login.html");
 		}
