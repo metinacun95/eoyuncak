@@ -19,7 +19,7 @@
 			"product/(.*?).html" => "App\Controllers\ProductController@product -> {productSef => [1]}",
 			"deletecart/(.*?).html" => "App\Controllers\CartController@deletecart -> { productId => [1] }",
 			"categories.html" => "App\Controllers\CategoryController@index",
-			"category/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => {1} }",
+			"category/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => [1] }",
 			
 			
 			

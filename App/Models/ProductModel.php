@@ -22,6 +22,12 @@
 		function getCategory($categoryId = 0){
 			return $this->db->table("kategoriler")->select("*")->where("KategoriId",$categoryId)->get();
 		}
+		function getCategoryFromSefLink($sefLink = ""){
+			if($sefLink == sefLink($sefLink)){
+				return $this->db->table("kategoriler")->select("*")->where("Sef",sefLink($sefLink))->get();
+			}
+			return ["error" => 1,"errorMessage" => "Hatalı sef link"];
+		}
 		function getCategories($sub = 0){
 			return $this->db->table("kategoriler")->select("*")->where("Alt",$sub)->orderBy("sira","ASC")->getAll();
 		}

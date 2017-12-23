@@ -64,7 +64,7 @@
 								if($isLogin){
 								?>
 								<li><a href="profile.html">Hoşgeldin, <?php echo $_SESSION["userName"] ?></a></li>
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+								<li><a href="<?php echo $link; ?>profile.html"><i class="fa fa-user"></i> Account</a></li>
 								<?php
 								}
 							?>
@@ -73,11 +73,11 @@
 									 
 									if($isLogin){
 										?>
-											<li><a href="logout.html"><i class="fa fa-sign-out"> Çıkış Yap</i></a></li>
+											<li><a href="<?php echo $link; ?>logout.html"><i class="fa fa-sign-out"> Çıkış Yap</i></a></li>
 										<?php
 									}else{
 										?>
-											<li><a href="login.html"><i class="fa fa-lock"></i> Giriş Yap</a></li>
+											<li><a href="<?php echo $link; ?>login.html"><i class="fa fa-lock"></i> Giriş Yap</a></li>
 										<?php
 									}
 								?>
