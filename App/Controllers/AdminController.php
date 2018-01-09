@@ -22,7 +22,6 @@
 			$categories = $p->getCategories();
 			return $this->view("Admin/Categories", ["categories"  => $categories, "link" => $this->link, "p" => $p]);
 		}
-
 		public function createCategory(){
 			$p = new ProductModel;
 			if($_POST){
@@ -44,7 +43,10 @@
 			$this->master->head(["title" => "Admin-Kategori Ekle"]);
 			return $this->view("Admin/AddCategory", ["link" => $this->link]);
 		}
-		public function updateCategory(){}
+		public function updateCategory(){
+			$categoryId = intval($this->params["id"]);
+			
+		}
 
 		public function deleteCategory(){
 			$p = new ProductModel;

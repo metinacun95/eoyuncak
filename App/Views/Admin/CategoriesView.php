@@ -49,7 +49,7 @@
 														<td><?php for($i=0;$i<$girinti;$i++){
 															echo "#";
 														} echo " ".$category->KategoriAdi; ?></td>
-														<td><a href="katalog_duzenle.php"><i class="fa fa-retweet fa-2x"></i></a></td>
+														<td><a href="<?php echo $link; ?>updateCategory/<?php echo $category->KategoriId; ?>.html"><i class="fa fa-retweet fa-2x"></i></a></td>
 														<td><a href="<?php echo $link; ?>admin/deleteCategory/<?php echo $category->KategoriId; ?>.html" onclick="return silOnayla();"><i class="fa fa-trash-o fa-2x"></i></a></td>
 													</tr> 
 														<?php

@@ -12,6 +12,7 @@
 			"addcart.html" => "App\Controllers\CartController@addCart",
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"addNewProduct.html" => "App\Controllers\TestController@addNewProduct",
+			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax",
 			"admin" => "App\Controllers\AdminController@index",
 			"admin/" => "App\Controllers\AdminController@index"
 		],

@@ -8,15 +8,6 @@
 		
 		public $master;
 		public function index(){
-			/*
-			$this->master = new MasterController;
-			$this->master->head([
-				"css" => ["reset.css","style.css"],
-				"js" => ["jquery.js","js.js"],
-				"title" => "E-Oyuncak - Anasayfa"
-			]);
-			$this->master->end();*/
-			//$a->update();
 			
 		}
 	}

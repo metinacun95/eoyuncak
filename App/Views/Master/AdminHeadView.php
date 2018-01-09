@@ -73,6 +73,12 @@
                             <li>
                                 <a href="<?php echo $link; ?>admin/category.html"><i class="fa fa-cogs "></i>Kategori Düzenle/Sil</a>
                             </li>
+							<li>
+                                <a href="<?php echo $link; ?>admin/createProductType.html"><i class="fa fa-cogs "></i>Ürün Oluştur</a>
+                            </li>
+							<li>
+                                <a href="<?php echo $link; ?>admin/addDetailProductType.html"><i class="fa fa-cogs "></i>Ürün Özellikleri Ekle</a>
+                            </li>
                         </ul>
                     </li>
 					<li>

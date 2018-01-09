@@ -7,6 +7,7 @@ $(document).ready(function(){
 		"dataType":"json",
 		success:function(result){
 			var add = "";
+			console.log(result);
 			for(var i=0; i<result.length;i++){
 				categoryGroup = result[i];
 				addPreend = '<select onChange="cat(this)" name="KategoriId">'; 
