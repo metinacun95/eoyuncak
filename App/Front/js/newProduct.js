@@ -123,7 +123,7 @@ function inputKontrol(){
 	var inputs = $(".ozellikler input");
 	var selects = $(".ozellikler select");
 	var kontrol = true;
-	if(inputs.length > 0 & selects.length > 0){
+	if(inputs.length > 0 | selects.length > 0){
 		kontrol = false;
 		for(var i=0;i<inputs.length;i++){
 			var input = $(".ozellikler input:eq("+i+")");
