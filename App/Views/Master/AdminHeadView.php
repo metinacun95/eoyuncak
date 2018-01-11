@@ -48,12 +48,12 @@
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="<?php echo $link."admin_assets/"; ?>image/yorumkisisi.png" alt="Profil" class="img-thumbnail" />
+                           <!--  <img src="" alt="Profil" class="img-thumbnail" /> -->
 
                             <div class="inner-text">
                                 Kullanıcı Adı
                             <br />						
-                                <small>Son Görülme : 12 Aralık 2017 Salı, 00:00:00</small>
+                                <small>Son Görülme : 11 Ocak 2018 Perşembe, 22:18:53</small>
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                         <a href="#"><i class="fa fa-windows "></i>Kurumsal<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="fa fa-flickr"></i>Hakkımızda</a>
+                                <a href="<?php echo $link; ?>admin/about.html"><i class="fa fa-flickr"></i>Hakkımızda</a>
                             </li>                       
                         </ul>
                     </li>

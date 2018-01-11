@@ -64,11 +64,11 @@
 								if($isLogin){
 								?>
 								<li><a href="profile.html">Hoşgeldin, <?php echo $_SESSION["userName"] ?></a></li>
-								<li><a href="<?php echo $link; ?>profile.html"><i class="fa fa-user"></i> Account</a></li>
+								<li><a href="<?php echo $link; ?>profile.html"><i class="fa fa-user"></i> Hesap</a></li>
 								<?php
 								}
 							?>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Sepetim</a></li>
 								<?php 
 									 
 									if($isLogin){
@@ -103,7 +103,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?php echo $link; ?>" class="active">Home</a></li>
+								<li><a href="<?php echo $link; ?>" class="active">Anasayfa</a></li>
 								<li class="dropdown"><a href="#">Kategoriler<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 										<?php
@@ -115,6 +115,7 @@
 										?>
                                     </ul>
                                 </li>
+                                <li><a href="<?php echo $link; ?>hakkimizda.html">Hakkımızda</a></li>
 								<li><a href="<?php echo $link; ?>iletisim.html">İletişim</a></li>
 							</ul>
 						</div>
@@ -122,7 +123,7 @@
 					<div class="col-sm-3">
 						<form action="<?php echo $link; ?>search" method="post">
 							<div class="search_box pull-right">
-								<input type="text" placeholder="Search"/>
+								<input type="text" placeholder="Ara"/>
 							</div>
 						</form>
 					</div>
