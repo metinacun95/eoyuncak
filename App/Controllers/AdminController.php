@@ -170,5 +170,18 @@
 			}
 			return false;
 		}
+
+		function about(){
+			$this->master->head(["title" => "Admin-Hakkımızda"]);
+			$io = new IOModel;
+			if($_POST){
+				$io->updateHakkimizda($_POST["hakkimda"]);?>
+				<script>alert("Yazı Güncellendi");</script><?php
+				
+			}
+			$data=[];
+			$data["hakkimizda"] = $io->getHakkimizda();
+			$this->view("Admin/Hakkimizda",$data); 
+		}
 	}
 ?>

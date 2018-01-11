@@ -12,27 +12,26 @@
 		}
 		function before(){
 			$this->master = new MasterController;
+			$this->master->head([
+				"title" => "E-Oyuncak - Anasayfa"
+			]);
 		}
+
+
 		function category(){
-			$categorySef = $this->params["categorySef"];
-			if($categorySef == sefLink($categorySef)){
-				$p = new ProductModel;
-				$category = $p->getCategoryFromSefLink($categorySef);
-				if(is_array($category)){
-					$this->redirect();
-				}
-				else if(count($category) == 1){
-					$this->master->head(["title" => $category->KategoriAdi]);
-					
-					$this->master->end();
-				}
-				else{
-					$this->redirect();
-				}
-			}
-			else{
-				$this->redirect();
-			}
+			$sef = $this->params["categorySef"];
+			$p=new ProductModel;
+			$data["p"] = $p;
+			$data["sef"] = $sef;
+			$data["link"] = $this->link;
+			$data["mostPays"] = $p->mostPays();
+			$data["products"] = $p->getAll();
+			$data["getCategories"] = $p->getCategories(0);
+			$this->view("KategoriUrun",$data);
+		}
+
+		function after(){
+			$this->master->end();
 		}
 	}
 ?>

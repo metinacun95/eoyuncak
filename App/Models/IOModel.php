@@ -79,5 +79,13 @@
 		function getId(){
 			return $_SESSION["userId"];
 		}
+
+		function getHakkimizda(){
+			$h = $this->db->table("hakkimizda")->select("*")->get();
+			return $h->aciklama;
+		}
+		function updateHakkimizda($text){
+			return $this->db->query("UPDATE hakkimizda SET aciklama='".$text."'");
+		}
 	}
 ?>

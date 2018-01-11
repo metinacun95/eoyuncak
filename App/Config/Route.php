@@ -13,6 +13,8 @@
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"addNewProduct.html" => "App\Controllers\TestController@addNewProduct",
 			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax",
+			"hakkimizda.html" => "App\Controllers\HomeController@about",
+			"iletisim.html" => "App\Controllers\HomeController@iletisim",
 			"admin" => "App\Controllers\AdminController@index",
 			"admin/" => "App\Controllers\AdminController@index"
 		],
@@ -31,6 +33,7 @@
 			"admin/user.html" => "App\Controllers\AdminController@user",
 			"admin/createProductType.html" => "App\Controllers\AdminController@createProductType",
 			"admin/order.html" => "App\Controllers\AdminController@order",
+			"admin/about.html" => "App\Controllers\AdminController@about",
 			"admin/createCategory.html" => "App\Controllers\AdminController@createCategory",
 			"admin/createProduct.html" => "App\Controllers\AdminController@createProduct",
 			"admin/createUser.html" => "App\Controllers\AdminController@createUser",
