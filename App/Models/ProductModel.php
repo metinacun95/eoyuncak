@@ -188,7 +188,6 @@
 		function mostPays(){
 			return $this->db->table("urunler")->select("*")->orderBy("urunler.ToplamSatinAlinma","DESC")->limit(15)->innerJoin("urunresimler","urunler.UrunId","urunresimler.UrunId")->getAll();
 		}
-
 		function kategoriBul($kategoriId){
 			$p=new ProductModel;
 			if($p->getCategory($kategoriId)->Alt!=0){
@@ -196,6 +195,36 @@
 				return $this->kategoriBul($p->getCategory($kategoriId)->Alt);
 			}
 			return $p->getCategory($kategoriId)->Sef;
+		}
+		function addNewProductType($typeName = "",$catId = 0){
+			$this->db->table("uruntipler")->insert([
+				"KategoriId" => intval($catId),
+				"UrunTipAdi" =>  toHtmlChars($typeName)
+			]);
+			return $this->db->insertId();
+		}
+		function addFeatureToProductType($UrunTipId,$OzellikAdi,$Cins,$degerler){
+			$OzellikTip = 0;
+			if(count($degerler) > 0){
+				$OzellikTip = 1;
+			}
+			$add = $this->db->table("urunozellikler")->insert([
+				"UrunTipId" => $UrunTipId,
+				"OzellikAdi" => $OzellikAdi,
+				"Cins" => $Cins,
+				"OzellikTip" => $OzellikTip,
+			]);
+			if($OzellikTip == 1){
+				$newFeatureId = $this->db->insertId();
+				if($newFeatureId > 0){
+					for($i = 0; $i<count($degerler);$i++){
+						$this->db->table("urunozellikliste")->insert([
+							"UrunOzellikId" => $newFeatureId,
+							"Ozellik" => $degerler[$i]
+						]);
+					}
+				}
+			}
 		}
 	}
 ?>

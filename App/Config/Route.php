@@ -11,8 +11,9 @@
 			"cart.html" => "App\Controllers\CartController@index",
 			"addcart.html" => "App\Controllers\CartController@addCart",
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
-			"addNewProduct.html" => "App\Controllers\TestController@addNewProduct",
-			"tnewProductAjax" => "App\Controllers\TestController@newProductAjax",
+			"addNewProduct.html" => "App\Controllers\AdminController@addNewProduct",
+			"tnewProductAjax" => "App\Controllers\AdminController@newProductAjax",
+			"addNewProductType" => "App\Controllers\AdminController@addNewProductType",
 			"hakkimizda.html" => "App\Controllers\HomeController@about",
 			"iletisim.html" => "App\Controllers\HomeController@iletisim",
 			"admin" => "App\Controllers\AdminController@index",
@@ -48,6 +49,7 @@
 			"admin/deleteUser/(.*?).html" => "App\Controllers\AdminController@deleteUser -> { id => [1]}",
 			"admin/deleteOrder/(.*?).html" => "App\Controllers\AdminController@deleteOrder -> { id => [1]}",
 			"admin/uploadImageProduct/(.*?).html" => "App\Controllers\AdminController@uploadImageProduct -> { id => [1]}",
+			"admin/addFeatureToProductType/(.*?).html" => "App\Controllers\AdminController@addFeatureToProductType -> { id => [1]}",
 			
 			
 		],

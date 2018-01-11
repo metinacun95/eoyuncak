@@ -78,7 +78,11 @@
 			"updateOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"deleteOrder" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"login" => [ "method" => "!App\Controllers\AdminController@isLogin","redirect" => "admin/index.html"],
-			"logout" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ]
+			"logout" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
+			"newproduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
+			"addNewProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
+			"addNewProductType" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
+			"addFeatureToProductType" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
 		]
 	];
 ?>

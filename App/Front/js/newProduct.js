@@ -22,15 +22,6 @@ $(document).ready(function(){
 			$(".kategoriler").html(add);
 		}
 	});
-	$("input[type='file']").on("change", function (e) {
-		var file = $(this)[0].files[0];
-		var upload = new Upload(file);
-
-		// maby check size or type here with upload.getSize() and upload.getType()
-
-		// execute upload
-		upload.doUpload();
-	});
 });
 function cat(obj){
 	obj = $(obj);
@@ -152,7 +143,6 @@ function inputKontrol(){
 	return !kontrol;
 }
 function kaydet(){
-	console.log("dsda");
 	if(inputKontrol()){
 		$(document).ready(function(){
 			var data = $("form").serialize();

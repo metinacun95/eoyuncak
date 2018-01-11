@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo $link; ?>js/newProductType.js"></script>
+<script type="text/javascript" src="<?php echo $link; ?>js/addFeatureToProductType.js"></script>
 <style type="text/css">
 	.kaydetDiv{
 			width:100px;
@@ -10,6 +10,7 @@
 			margin-top:10px;
 			border-radius:5px;
 			cursor:not-allowed;
+			border:0px;
 		}
 </style>
 <div id="page-wrapper">
@@ -17,7 +18,7 @@
                 <!-- #################################################### -->
 				<div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Ürün Tip Ekle</h1>
+                        <h1 class="page-head-line">Özellik Ekle</h1>
 
                     </div>
                 </div>
@@ -28,20 +29,17 @@
                     <div class="panel panel-default">
                        
                         <div class="panel-heading">
-                            Yeni Ürün Tipi Ekle
+                           Özellik Ekle
                         </div>
 							<div class="panel-body">
 								<form action="" method="post">
-									<b>Ürün Tipi Ekle</b>
+									<b>Özellik Ekle</b>
 									<div class="urunStandart">
-										Ürün Tip Adı : <input type="text" name="TipAdi" onKeyUp="inputKontrol()" onChange="inputKontrol()" /> <br />
+										Özellik Adı : <input type="text" name="OzellikAdi" onKeyUp="inputKontrol()" onChange="inputKontrol()" /> <br />
+										Özellik Cins : <input type="text" name="OzellikCins" onKeyUp="inputKontrol()" onChange="inputKontrol()" /> <br />
+										Özellik Alabilecek Değerler ( Optional ): <br /><textarea name="degerler" placeholder="Her bir seçeneği virgül ile ayırınız. Örnek : (değer1,değer2,değer3)"></textarea>
 									</div>
-									<div class="kategoriler">
-										
-									</div>
-									<div class="kaydetDiv" onClick="kaydet()">
-										Kaydet
-									</div>
+									<input type="submit" class="kaydetDiv" value="Kaydet" />
 								</form>
 							</div>
                     </div>
