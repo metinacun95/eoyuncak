@@ -41,6 +41,7 @@
 			"admin/createProduct.html" => "App\Controllers\AdminController@createProduct",
 			"admin/createUser.html" => "App\Controllers\AdminController@createUser",
 			"admin/createOrder.html" => "App\Controllers\AdminController@createOrder",
+			"admin/addDetailProductType.html" => "App\Controllers\AdminController@addDetailProductType",
 			"admin/updateCategory/(.*?).html" => "App\Controllers\AdminController@updateCategory -> { id => [1]}",
 			"admin/updateUser/(.*?).html" => "App\Controllers\AdminController@updateUser -> { id => [1]}",
 			"admin/updateOrder/(.*?).html" => "App\Controllers\AdminController@updateOrder -> { id => [1]}",

@@ -83,6 +83,7 @@
 			"addNewProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
 			"addNewProductType" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
 			"addFeatureToProductType" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
+			"addDetailProductType" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html"],
 		]
 	];
 ?>

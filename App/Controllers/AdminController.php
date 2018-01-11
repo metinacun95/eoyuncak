@@ -205,9 +205,15 @@
 			if(isset($_POST["OzellikAdi"],$_POST["OzellikCins"],$_POST["degerler"])){
 				$OzellikAdi = toHtmlChars($_POST["OzellikAdi"]);
 				$OzellikCins = toHtmlChars($_POST["OzellikCins"]);
-				$degerler = explode(",",$_POST["degerler"]);
-				for($i=0;$i<count($degerler);$i++){
-					$degerler[$i] = toHtmlChars($degerler[$i]);
+				$degerler = $_POST["degerler"];
+				if($degerler == ""){
+					$degerler = [];
+				}
+				else{
+					$degerler = explode(",",$degerler);
+					for($i=0;$i<count($degerler);$i++){
+						$degerler[$i] = toHtmlChars($degerler[$i]);
+					}
 				}
 				$p = new ProductModel;
 				if($p->addFeatureToProductType($id,$OzellikAdi,$OzellikCins,$degerler)){
@@ -220,9 +226,12 @@
 			$this->master->head(["title"=> "Admin - Ürün Tipine Özellik Ekle"]);
 			return $this->view("Admin/addFeatureToProductType",["link"=>$this->link,"error" => $error]);
 		}
+		function addDetailProductType(){
+			$this->master->head(["title"=> "Admin - Ürün Tipine Özellik Ekle"]);
+			return $this->view("Admin/addDetailProductType",["link"=>$this->link]);
+		}
 		public function createProduct(){
 			$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
-			$p = new ProductModel;
 			return $this->view("Admin/NewProduct", ["link" => $this->link]);
 		}
 		function uploadImageProduct(){
