@@ -179,5 +179,18 @@
 			$data["hakkimizda"] = $io->getHakkimizda();
 			$this->view("Admin/Hakkimizda",$data); 
 		}
+
+		function contact(){
+			$this->master->head(["title" => "Admin-İletişim"]);
+			$io = new IOModel;
+			if($_POST){
+				$io->updateIletisim($_POST["telno"],$_POST["email"],$_POST["facebook"],$_POST["twitter"]);?>
+				<script>alert("Bilgiler Güncellendi");</script><?php
+				
+			}
+			$data=[];
+			$data["iletisim"] = $io->getIletisim();
+			$this->view("Admin/Iletisim",$data); 
+		}
 	}
 ?>

@@ -87,5 +87,19 @@
 		function updateHakkimizda($text){
 			return $this->db->query("UPDATE hakkimizda SET aciklama='".$text."'");
 		}
+
+		function updateIletisim($telno,$email,$facebook,$twitter){
+			return $this->db->query("UPDATE iletisim SET telno='".$telno."', email='".$email."', facebook='".$facebook."', twitter='".$twitter."'");
+		}
+
+		function getIletisim(){
+			$h = $this->db->table("iletisim")->select("*")->get();
+			$data =[];
+			$data["telno"] = $h->telno;
+			$data["email"] = $h->email;
+			$data["facebook"] = $h->facebook;
+			$data["twitter"] = $h->twitter;
+			return $data;
+		}
 	}
 ?>

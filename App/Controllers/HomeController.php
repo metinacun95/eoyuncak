@@ -36,6 +36,7 @@
 			$io=new IOModel;
 			$data=[];
 			$data["hakkimizda"] = $io->getHakkimizda();
+			$data["iletisim"] = $io->getIletisim();
 			$this->view("Iletisim",$data); 
 		}
 	}

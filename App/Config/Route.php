@@ -35,6 +35,7 @@
 			"admin/user.html" => "App\Controllers\AdminController@user",
 			"admin/order.html" => "App\Controllers\AdminController@order",
 			"admin/about.html" => "App\Controllers\AdminController@about",
+			"admin/contact.html" => "App\Controllers\AdminController@contact",
 			"admin/createCategory.html" => "App\Controllers\AdminController@createCategory",
 			"admin/createProduct.html" => "App\Controllers\AdminController@createProduct",
 			"admin/createUser.html" => "App\Controllers\AdminController@createUser",
