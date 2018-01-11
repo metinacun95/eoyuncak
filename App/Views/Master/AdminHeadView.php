@@ -109,7 +109,7 @@
                         <a href="<?php echo $link; ?>admin/user.html"><i class="fa fa-users "></i>Üyeler</a>  
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-phone "></i>İletişim Bilgileri</a>  
+                        <a href="<?php echo $link; ?>admin/contact.html"><i class="fa fa-phone "></i>İletişim Bilgileri</a>  
                     </li>
                      <li>
                         <a href="#"><i class="fa fa-user "></i>Yönetici İşlemleri <span class="fa arrow"></span></a>

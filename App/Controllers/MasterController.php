@@ -26,6 +26,7 @@
 			$io = new IOModel;
 			$data["cats"] = $c->getCategories();
 			$data["isLogin"] = $io->isLogin();
+			$data["iletisim"] = $io->getIletisim();
 			$this->view("Master/Head",$data);
 		}
 		public function end(){
