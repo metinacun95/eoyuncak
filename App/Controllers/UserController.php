@@ -21,13 +21,6 @@
 			
 		}
 
-		function before(){
-			$this->master = new MasterController;
-			$this->master->head([
-				"title" => "E-Oyuncak - Anasayfa"
-			]);
-		}
-
 		function signUp(){
 
 			if($_POST){
@@ -67,18 +60,90 @@
 			$this->master->end();
 		}
 
-		function profile(){
+		function update(){
 
-			$u = new UserModel;
-			$data=[];
-			$data["user"] = $io->get();
-			$this->view("Profile",$data); 
+			if($_POST){
+				echo $_POST["Adres"];
+				$userModel = new UserModel;
+				if(!empty($_POST["yeniparola"]) && $userModel->get($_SESSION["userId"])->Parola==md5($_POST["mevcutparola"])){
+
+					$validator = GUMP::is_valid($_POST, [
+						"Ad" => "required|max_len,100",
+						"Soyad" => "required|max_len,100",
+						"Eposta" => "required|valid_email",
+						"yeniparola" => "required|max_len,100|min_len,6",
+						"Adres"	=> "max_len,255"
+					]);
+
+					if($validator === true){
+
+						$data = [];
+						$data["Ad"] = $this->request->Ad;
+						$data["Soyad"] = $this->request->Soyad;
+						$data["Eposta"] = $this->request->Eposta;
+						$data["Parola"] = $this->request->yeniparola;
+						$data["Adres"] = $this->request->Adres;
+						$userModel->update($data,$_SESSION["userId"]);
+						$this->redirect('profile.html');
+
+					}else{
+
+						$_SESSION['FLASH_SIGNUP'] = $validator;
+						$this->redirect('profile.html');
+					}
+				}else{
+					$validator = GUMP::is_valid($_POST, [
+						"Ad" => "required|max_len,100",
+						"Soyad" => "required|max_len,100",
+						"Eposta" => "required|valid_email",
+						"Adres"	=> "max_len,255"
+					]);
+
+					if($validator === true){
+
+						$data = [];
+						$data["Ad"] = $this->request->Ad;
+						$data["Soyad"] = $this->request->Soyad;
+						$data["Eposta"] = $this->request->Eposta;
+						$data["Adres"] = $this->request->Adres;
+						$userModel->update($data,$_SESSION["userId"]);
+						$this->redirect('profile.html');
+
+					}else{
+
+						$_SESSION['FLASH_SIGNUP'] = $validator;
+						$this->redirect('profile.html');
+					}
+				}
+			}
+
+
+
+		}
+
+		function profile(){
+			
+			$this->master = new MasterController;
+			$this->master->head([
+				"title" => "E-Oyuncak - Profile"
+			]);
+			
+			$io=new IOModel;
+			if($io->isLogin()){
+				$u = new UserModel;
+				$data=[];
+				$data["user"] = $u->get($_SESSION['userId']);
+				$this->view("Profile",$data); 
+			}
+			else{
+				$this->redirect("login.html");
+			}
+
+			
+			$this->master->end();
 			
 		}
-
-		function after(){
-			$this->master->end();
-		}
+		
 
 	}
 ?>

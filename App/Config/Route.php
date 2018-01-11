@@ -7,6 +7,7 @@
 			"user.html" => "App\Controllers\UserController@index",
 			"signUp.html" => "App\Controllers\UserController@signUp",
 			"profile.html" => "App\Controllers\UserController@profile",
+			"profileUpdate.html" => "App\Controllers\UserController@update",
 			"editprofile.html" => "App\Controllers\UserController@editprofile",
 			"cart.html" => "App\Controllers\CartController@index",
 			"addcart.html" => "App\Controllers\CartController@addCart",
