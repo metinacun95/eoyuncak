@@ -22,8 +22,6 @@
 			"categories.html" => "App\Controllers\CategoryController@index",
 			"category/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => [1] }",
 			
-			
-			
 			"ajaxSearch" => "App\Controllers\AjaxController@search",
 			"ajax" => "App\Controllers\AjaxController@index",
 			"admin/login.html" => "App\Controllers\AdminController@login",
@@ -31,6 +29,7 @@
 			"admin/category.html" => "App\Controllers\AdminController@category",
 			"admin/product.html" => "App\Controllers\AdminController@product",
 			"admin/user.html" => "App\Controllers\AdminController@user",
+			"admin/createProductType.html" => "App\Controllers\AdminController@createProductType",
 			"admin/order.html" => "App\Controllers\AdminController@order",
 			"admin/createCategory.html" => "App\Controllers\AdminController@createCategory",
 			"admin/createProduct.html" => "App\Controllers\AdminController@createProduct",

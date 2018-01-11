@@ -65,6 +65,7 @@
 			"updateCategory" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"deleteCategory" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"product" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
+			"createProductType" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"createProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"updateProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],
 			"deleteProduct" => [ "method" => "App\Controllers\AdminController@isLogin","redirect" => "admin/login.html" ],

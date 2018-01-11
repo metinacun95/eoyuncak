@@ -66,7 +66,7 @@ function cat(obj){
 					$(".ozellikler").html("");
 				}
 			}
-			else if(typeof(result["productTypes"]) != "undefined"){
+			/*else if(typeof(result["productTypes"]) != "undefined"){
 				var productTypes = result["productTypes"];
 				var add = 'Ürün Tipler : <br /> <select onChange="selectType(this)"  name="UrunTip">';
 				add = add + '<option value="0">Seçiniz</option>'
@@ -75,7 +75,7 @@ function cat(obj){
 				}
 				add = add + "</select> <br />";
 				$(".urunTipler").html(add);
-			}
+			}*/
 		},
 		error:function(result){
 			console.log("error : ");
@@ -120,61 +120,18 @@ function selectType(obj){
 	});
 }
 function inputKontrol(){
-	var inputs = $(".ozellikler input");
-	var selects = $(".ozellikler select");
 	var kontrol = true;
-	if(inputs.length > 0 | selects.length > 0){
-		kontrol = false;
-		for(var i=0;i<inputs.length;i++){
-			var input = $(".ozellikler input:eq("+i+")");
-			if(input.val() == ""){
-				kontrol = true; break;
-			}
-		}
-		for(var i=0;i<selects.length;i++){
-			var select = $(".ozellikler select:eq("+i+")");
-			if(select.val() == ""){
-				kontrol = true; break;
-			}
-		}
-		if($("input[name='Baslik']").val() == ""){ kontrol = true; }
-		if($("input[name='Aciklama']").val() == ""){ kontrol = true; }
-		if($("input[name='UrunFiyat']").val() == ""){ kontrol = true; }
-		if($("input[name='Stok']").val() == ""){ kontrol = true; }
-		if($("input[name='urunResim']").val() == ""){ kontrol = true; }
-		if(!kontrol){
-			$(".kaydetDiv").css({"background":"green","cursor":"pointer"});
-		}
-		else{
-			$(".kaydetDiv").css({"background":"#ccc","cursor":"not-allowed"});
-		}
+	var type = $("input[name='TipAdi']").val();
+	if(type == ""){
+		return false;
 	}
-	return !kontrol;
+	return kontrol;
 }
 function kaydet(){
-	console.log("dsda");
 	if(inputKontrol()){
 		$(document).ready(function(){
 			var data = $("form").serialize();
-			$.ajax({
-				"type":"post",
-				"url":link+"addNewProduct.html",
-				"data":data,
-				"dataType":"json",
-				success:function(result){
-					console.log(result);
-					if(result.error == 0){
-						alert("Ürün başarıyla eklendi");
-						window.location = link+"admin/uploadImageProduct/"+result.productId+".html";
-					}
-					else{
-						alert(result.errorMessage);
-					}
-				},
-				error:function(result){
-					console.log(result);
-				}
-			});
+			
 		});
 	}
 	else{

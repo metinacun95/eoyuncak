@@ -59,6 +59,10 @@
 			$products = $p->getAll();
 			return $this->view("Admin/Products", ["products"  => $products, "link" => $this->link, "p" => $p]);
 		}
+		public function createProductType(){
+			$this->master->head(["title"=> "Admin - Yeni Ürün Tipi Oluştur"]);
+			return $this->view("Admin/CreateProductType",["link"=>$this->link]);
+		}
 		public function createProduct(){
 			$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
 			$p = new ProductModel;

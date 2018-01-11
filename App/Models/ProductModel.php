@@ -95,7 +95,7 @@
 				$this->db->table("urunozellikdegerler")->where("UrunId",$productId)->delete();
 				$productImages = $this->db->table("urunresimler")->select("ResimYol")->where("UrunId",$productId)->getAll();
 				foreach($productImages as $p){
-					unlink(PATH."/App/Front/images/productImages/".$p["ResimYol"]);
+					unlink(PATH."/App/Front/images/productImages/".$p->ResimYol);
 				}
 				return [
 					"error" => 0,
@@ -122,11 +122,10 @@
 			db->
 			table("urunler")->
 			select("*")->
-			innerJoin("urunozellikler","urunler.UrunTip","urunozellikler.UrunTipId")->
-			innerJoin("urunozellikdegerler","urunler.UrunId","urunozellikdegerler.UrunId")->
 			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
 			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
 			getAll();
+			print_r($data);
 		}
 		function insertImageToProduct($productId = 0,$imgFile = ""){
 			$newFileName = $this->randomFileName().".png";

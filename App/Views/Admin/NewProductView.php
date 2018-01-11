@@ -29,12 +29,12 @@
                     <div class="panel panel-default">
                        
                         <div class="panel-heading">
-                            Yeni Kategori Ekle
+                            Yeni Ürün Ekle
                         </div>
                         
                                 <div class="panel-body">
 								<form action="<?php echo $link; ?>addNewProduct.html" method="post">
-								<b>Ürün Ekleme Test</b>
+								<b>Ürün Ekle</b>
 								<div class="urunStandart">
 									Başlık : <input type="text" name="Baslik" onKeyUp="inputKontrol()" onChange="inputKontrol()" /> <br />
 									Ürün Açıklama : <textarea name="Aciklama" onKeyUp="inputKontrol()" onChange="inputKontrol()"></textarea> <br />

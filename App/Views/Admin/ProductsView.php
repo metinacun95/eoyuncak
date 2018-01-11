@@ -39,12 +39,12 @@
                                     </thead>
                                     <tbody>
 
-										<?php 
+										<?php
 											foreach($products as $product){
 
 												?>
 												<tr class="success">
-												<td><img height="70" width="100" src="<?php echo $product->ResimYollari ?>" alt=""></td>
+												<td><img height="70" width="100" src="<?php echo $link; ?>images/productImages/<?php echo $product->ResimYol; ?>" alt=""></td>
 												<td><?php echo $product->Baslik ?></td>
 												<td><?php echo $product->Aciklama ?></td>
 												<td><?php echo $p->getCategory($product->KategoriId)->KategoriAdi; ?></td>
