@@ -15,8 +15,10 @@
 		}
 		public function index(){
 			$p = new ProductModel;
+			$data["p"] = $p;
 			$data["link"] = $this->link;
 			$data["mostPays"] = $p->mostPays();
+			$data["products"] = $p->getAll();
 			$data["getCategories"] = $p->getCategories(0);
 			$this->view("Home",$data);
 		}

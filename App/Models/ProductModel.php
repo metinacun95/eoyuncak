@@ -188,5 +188,14 @@
 		function mostPays(){
 			return $this->db->table("urunler")->select("*")->orderBy("urunler.ToplamSatinAlinma","DESC")->limit(15)->innerJoin("urunresimler","urunler.UrunId","urunresimler.UrunId")->getAll();
 		}
+
+		function kategoriBul($kategoriId){
+			$p=new ProductModel;
+			if($p->getCategory($kategoriId)->Alt!=0){
+
+				return $this->kategoriBul($p->getCategory($kategoriId)->Alt);
+			}
+			return $p->getCategory($kategoriId)->Sef;
+		}
 	}
 ?>
