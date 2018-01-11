@@ -31,6 +31,18 @@
                         <div class="panel-heading">
                            Özellik Ekle
                         </div>
+							<?php
+								if($error == 1){
+								?>
+								<font color="green">Özellik eklendi. Devam edebilirsiniz</font>
+								<?php
+								}
+								else if($error == 2){
+								?>
+								<font color="red">Özellik eklenemedi. Yeniden deneyin</font>
+								<?php
+								}
+							?>
 							<div class="panel-body">
 								<form action="" method="post">
 									<b>Özellik Ekle</b>

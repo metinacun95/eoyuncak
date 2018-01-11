@@ -201,6 +201,7 @@
 		}
 		function addFeatureToProductType(){
 			$id = intval($this->params["id"]);
+			$error = 0;
 			if(isset($_POST["OzellikAdi"],$_POST["OzellikCins"],$_POST["degerler"])){
 				$OzellikAdi = toHtmlChars($_POST["OzellikAdi"]);
 				$OzellikCins = toHtmlChars($_POST["OzellikCins"]);
@@ -209,10 +210,15 @@
 					$degerler[$i] = toHtmlChars($degerler[$i]);
 				}
 				$p = new ProductModel;
-				$p->addFeatureToProductType($id,$OzellikAdi,$OzellikCins,$degerler);
+				if($p->addFeatureToProductType($id,$OzellikAdi,$OzellikCins,$degerler)){
+					$error = 1;
+				}
+				else{
+					$error = 2;
+				}
 			}
 			$this->master->head(["title"=> "Admin - Ürün Tipine Özellik Ekle"]);
-			return $this->view("Admin/addFeatureToProductType",["link"=>$this->link,"error" => 0]);
+			return $this->view("Admin/addFeatureToProductType",["link"=>$this->link,"error" => $error]);
 		}
 		public function createProduct(){
 			$this->master->head(["title" => "Admin-Yeni Ürün Ekle"]);
