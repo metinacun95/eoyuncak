@@ -21,6 +21,13 @@
 			
 		}
 
+		function before(){
+			$this->master = new MasterController;
+			$this->master->head([
+				"title" => "E-Oyuncak - Anasayfa"
+			]);
+		}
+
 		function signUp(){
 
 			if($_POST){
@@ -63,9 +70,14 @@
 		function profile(){
 
 			$u = new UserModel;
-			echo $u->get($_SESSION["userId"])->Ad." ";
-			echo $u->get($_SESSION["userId"])->Soyad."<br>";
-			echo $u->get($_SESSION["userId"])->KullaniciAdi."<br>";
+			$data=[];
+			$data["user"] = $io->get();
+			$this->view("Profile",$data); 
+			
+		}
+
+		function after(){
+			$this->master->end();
 		}
 
 	}
