@@ -66,7 +66,7 @@
 								<?php
 								}
 							?>
-								<li><a href="<?php echo $link; ?>cart.html"><i class="fa fa-shopping-cart"></i> Sepetim (<?php echo $cartCount; ?>)</a></li>
+								<li><a href="<?php echo $link; ?>cart.html"><i class="fa fa-shopping-cart"></i> Sepetim (<?php if(isset($_SESSION["userId"]))echo $cartCount; else echo 0; ?>)</a></li>
 								<?php 
 									 
 									if($isLogin){

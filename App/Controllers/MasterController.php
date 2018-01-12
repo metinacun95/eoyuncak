@@ -29,7 +29,10 @@
 			$data["cats"] = $c->getCategories();
 			$data["isLogin"] = $io->isLogin();
 			$data["iletisim"] = $io->getIletisim();
-			$data["cartCount"]=$cart->getCount($_SESSION["userId"]);
+			if(isset($_SESSION["userId"])){
+				$data["cartCount"]=$cart->getCount($_SESSION["userId"]);
+			}
+			
 			$this->view("Master/Head",$data);
 		}
 		public function end(){
