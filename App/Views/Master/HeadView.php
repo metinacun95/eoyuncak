@@ -61,12 +61,12 @@
 							<?php
 								if($isLogin){
 								?>
-								<li><a href="profile.html">Hoşgeldin, <?php echo $_SESSION["userName"] ?></a></li>
+								<li><a href="<?php echo $link; ?>profile.html">Hoşgeldin, <?php echo $_SESSION["userName"] ?></a></li>
 								<li><a href="<?php echo $link; ?>profile.html"><i class="fa fa-user"></i> Hesap</a></li>
 								<?php
 								}
 							?>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Sepetim</a></li>
+								<li><a href="<?php echo $link; ?>cart.html"><i class="fa fa-shopping-cart"></i> Sepetim (<?php echo $cartCount; ?>)</a></li>
 								<?php 
 									 
 									if($isLogin){

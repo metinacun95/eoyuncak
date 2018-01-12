@@ -2,6 +2,7 @@
 	namespace App\Controllers;
 	use App\Models\SiteModel;
 	use App\Models\ProductModel;
+	use App\Models\CartModel;
 	use App\Models\IOModel;
 
 	class MasterController extends Controller{
@@ -24,9 +25,11 @@
 			}
 			$c = new ProductModel;
 			$io = new IOModel;
+			$cart = new CartModel;
 			$data["cats"] = $c->getCategories();
 			$data["isLogin"] = $io->isLogin();
 			$data["iletisim"] = $io->getIletisim();
+			$data["cartCount"]=$cart->getCount($_SESSION["userId"]);
 			$this->view("Master/Head",$data);
 		}
 		public function end(){
