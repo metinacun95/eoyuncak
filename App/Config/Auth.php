@@ -35,12 +35,16 @@
 			"editprofile" => [
 				"method" => "App\Models\IOModel@isLogin",
 				"redirect" => ""
+			],
+			"pay" => [
+				"method" => "App\Models\IOModel@isLogin",
+				"redirect" => ""
 			]
 		],
 		"App\Controllers\CartController" => [
-			"index" => "*",
-			"addCart" => "*",
-			"deletecart" => "*"
+			"index" => ["method" => "App\Models\IOModel@isLogin","redirect" => ""],
+			"addCart" => ["method" => "App\Models\IOModel@isLogin","redirect" => ""],
+			"deletecart" => ["method" => "App\Models\IOModel@isLogin","redirect" => ""]
 		],
 		"App\Controllers\ProductController" => [
 			"product" => "*",

@@ -11,7 +11,6 @@
 			"editprofile.html" => "App\Controllers\UserController@editprofile",
 			"cart.html" => "App\Controllers\CartController@index",
 			"addcart.html" => "App\Controllers\CartController@addCart",
-			"deleteCart/(.*?).html" => "App\Controllers\CartController@delete -> {id => [1]}",
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"addNewProduct.html" => "App\Controllers\AdminController@addNewProduct",
 			"tnewProductAjax" => "App\Controllers\AdminController@newProductAjax",
@@ -19,11 +18,12 @@
 			"hakkimizda.html" => "App\Controllers\HomeController@about",
 			"iletisim.html" => "App\Controllers\HomeController@iletisim",
 			"admin" => "App\Controllers\AdminController@index",
-			"admin/" => "App\Controllers\AdminController@index"
+			"admin/" => "App\Controllers\AdminController@index",
+			"pay.html" => "App\Controllers\UserController@pay"
 		],
 		"preg_matches" =>[
 			"product/(.*?).html" => "App\Controllers\ProductController@product -> {productSef => [1]}",
-			"deletecart/(.*?).html" => "App\Controllers\CartController@deletecart -> { productId => [1] }",
+			"deletecart/(.*?).html" => "App\Controllers\CartController@deletecart -> { id => [1] }",
 			"categories.html" => "App\Controllers\CategoryController@index",
 			"category/(.*?).html" => "App\Controllers\CategoryController@category -> { categorySef => [1] }",
 			
@@ -50,7 +50,7 @@
 			"admin/deleteCategory/(.*?).html" => "App\Controllers\AdminController@deleteCategory -> { id => [1]}",
 			"admin/deleteProduct/(.*?).html" => "App\Controllers\AdminController@deleteProduct -> { id => [1]}",
 			"admin/deleteUser/(.*?).html" => "App\Controllers\AdminController@deleteUser -> { id => [1]}",
-			"admin/deleteOrder/(.*?).html" => "App\Controllers\AdminController@deleteOrder -> { id => [1]}",
+			"admin/sendOrder/(.*?).html" => "App\Controllers\AdminController@sendOrder -> { id => [1]}",
 			"admin/uploadImageProduct/(.*?).html" => "App\Controllers\AdminController@uploadImageProduct -> { id => [1]}",
 			"admin/addFeatureToProductType/(.*?).html" => "App\Controllers\AdminController@addFeatureToProductType -> { id => [1]}",
 			

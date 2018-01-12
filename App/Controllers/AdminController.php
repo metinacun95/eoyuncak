@@ -320,14 +320,14 @@
 			$this->master->head(["title" => "Admin-Siparişler"]);
 			$o = new OrderModel;
 			$orders = $o->getAll();
-			return $this->view("Admin/Orders", ["orders"  => $users, "link" => $this->link, "o" => $o]);
+			return $this->view("Admin/Orders", ["orders"  => $orders, "link" => $this->link]);
 		}
 		public function createOrder(){}
 		public function updateOrder(){}
 
-		public function deleteOrder(){
+		public function sendOrder(){
 			$o = new OrderModel;
-			$o->destroy(intval($this->params["id"]));
+			$o->send(intval($this->params["id"]));
 			$this->redirect("admin/order.html");
 		}
 		function login(){

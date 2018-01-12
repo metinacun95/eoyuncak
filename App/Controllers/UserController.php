@@ -3,6 +3,7 @@
 	use App\Controllers\MasterController;
 	use App\Models\UserModel;
 	use App\Models\IOModel;
+	use App\Models\OrderModel;
 	use GUMP;
 	use PHPMailer;
 	class UserController extends Controller{ // HomeController@index
@@ -143,7 +144,15 @@
 			$this->master->end();
 			
 		}
-		
-
+		function pay(){
+			$this->master = new MasterController;
+			$this->master->head([
+				"title" => "E-Oyuncak - Ödeme Sayfası"
+			]);
+			$o = new OrderModel;
+			$o->addFromCarts($_SESSION["userId"]);
+			$this->view("Pay");
+			$this->master->end();
+		}
 	}
 ?>

@@ -36,8 +36,6 @@
             </div>
 
             <div class="header-right">
-                <a href="#" class="btn btn-info" title="Yeni Mesaj"><b> 5 </b><i class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="#" class="btn btn-primary" title="#"><b>0 </b><i class="fa fa-bars fa-2x"></i></a>
                 <a href="<?php echo $link; ?>admin/logout.html" class="btn btn-danger" title="Çıkış"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
             </div>
@@ -47,15 +45,6 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <div class="user-img-div">
-                           <!--  <img src="" alt="Profil" class="img-thumbnail" /> -->
-
-                            <div class="inner-text">
-                                Kullanıcı Adı
-                            <br />						
-                                <small>Son Görülme : 11 Ocak 2018 Perşembe, 22:18:53</small>
-                            </div>
-                        </div>
 
                     </li>
 					<li>
@@ -116,12 +105,9 @@
                          <ul class="nav nav-second-level">
                            
                              <li>
-                                <a href="#"><i class="fa fa-key "></i>Şifre Değiştir</a>
+                                <a href="<?php echo $link; ?>profile.html"><i class="fa fa-key "></i>Şifre Değiştir</a>
                             </li>                     
                         </ul>
-                    </li>
-					<li>
-                        <a href="#"><i class="fa fa-cog "></i>Site Ayarları</a>  
                     </li>
                 </ul>
 

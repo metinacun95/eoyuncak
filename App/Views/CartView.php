@@ -4,24 +4,23 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
+							<td class="image">Ürün</td>
 							<td class="description"></td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
+							<td class="price">Fiyat</td>
 							<td></td>
 						</tr>
 					</thead>
 					<tbody>
 						<?php 
-							foreach($carts as $cart){
+							for($i=0;($i<count($carts) & !isset($carts["error"]));$i++){
+								$cart = $carts[$i]->UrunId;
 								$product = $p->get(intval($cart));
 								?>
 
 							<tr>
 							<td class="cart_product">
 								
-								<a href=""><img src="<?php echo $link; ?>images/productImages/<?php echo $product->ResimYol; ?>" alt=""></a>
+								<a href="<?php echo $link; ?>/product/<?php echo $product->UrunId; ?>.html"><img style="width:200px;height:auto;" src="<?php echo $link; ?>images/productImages/<?php echo $product->ResimYol; ?>" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href=""><?php echo $product->Baslik; ?></a></h4>
@@ -31,11 +30,6 @@
 								<p><?php echo $product->UrunFiyat; ?></p>
 							</td>
 							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price"><?php echo $product->UrunFiyat; ?></p>
@@ -53,6 +47,10 @@
 						
 					</tbody>
 				</table>
+				<?php
+				if(!isset($carts["error"])){ ?>
+				<a href="<?php echo $link; ?>pay.html"><button type="button" class="btn btn-primary" style="width:100%;">Ödemeyi Gerçekleştir</button></a>
+				<?php } ?>
 			</div>
 		</div>
 	</section> <!--/#cart_items-->

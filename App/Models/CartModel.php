@@ -126,12 +126,12 @@
 			if($IOModel->isLogin()){
 
 				$cart = $this->db->query("SELECT UrunId FROM alisverissepeti WHERE UyeId='$id'");
-
 				if(count($cart)>0){
-
+					$array = [];
 					foreach($cart as $c){
-						return $c;
+					    $array[] = $c;
 					}
+					return $array;
 				}else{
 
 					return [

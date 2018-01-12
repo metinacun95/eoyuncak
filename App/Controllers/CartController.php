@@ -43,7 +43,7 @@
 			$data["OdenecekTutar"] = $_POST["tutar"];
 			$data["Alinma"] = 0;
 			$c->create($data);
-			$this->redirect("");
+			$this->redirect("cart.html");
 		}
 
 
