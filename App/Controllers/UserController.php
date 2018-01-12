@@ -82,7 +82,7 @@
 						$data["Parola"] = $this->request->yeniparola;
 						$data["Adres"] = $this->request->Adres;
 						$userModel->update($data,$_SESSION["userId"]);
-						exit;
+						
 						$this->redirect('profile.html');
 
 					}else{
@@ -105,7 +105,7 @@
 						$data["Eposta"] = $this->request->Eposta;
 						$data["Adres"] = $this->request->Adres;
 						$userModel->update($data,$_SESSION["userId"]);
-						exit;
+						
 						$this->redirect('profile.html');
 
 					}else{

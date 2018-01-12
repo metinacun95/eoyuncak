@@ -120,7 +120,7 @@
 				$productImages = $this->db->table("urunresimler")->select("ResimYol")->where("UrunId",$productId)->getAll();
 				foreach($productImages as $p){
 					unlink(PATH."/App/Front/images/productImages/".$p->ResimYol);
-					unlink($link."images/productImages/".$p["ResimYol"]);
+					$this->db->table("urunresimler")->where("UrunId",$productId)->delete();
 				}
 				return [
 					"error" => 0,

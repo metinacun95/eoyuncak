@@ -88,7 +88,7 @@
 
 			if($IOModel->isLogin()){
 
-				$destroy = $this->db->table('alisverissepeti')->where('UyeId', $id)->delete();
+				$destroy = $this->db->table('alisverissepeti')->where('UrunId', $id)->delete();
 
 				if($destroy){
 
@@ -157,6 +157,18 @@
 			}
 
 			
+		}
+
+		function getCount($id){
+			$IOModel = new IOModel();
+
+			if($IOModel->isLogin()){
+
+				$cart = $this->db->query("SELECT * FROM alisverissepeti WHERE UyeId='$id'");
+
+				return count($cart);
+
+			}
 		}
 
 		function getAll(){

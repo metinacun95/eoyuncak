@@ -11,6 +11,7 @@
 			"editprofile.html" => "App\Controllers\UserController@editprofile",
 			"cart.html" => "App\Controllers\CartController@index",
 			"addcart.html" => "App\Controllers\CartController@addCart",
+			"deleteCart/(.*?).html" => "App\Controllers\CartController@delete -> {id => [1]}",
 			"newproduct.html" => "App\Controllers\ProductController@newproduct",
 			"addNewProduct.html" => "App\Controllers\AdminController@addNewProduct",
 			"tnewProductAjax" => "App\Controllers\AdminController@newProductAjax",
