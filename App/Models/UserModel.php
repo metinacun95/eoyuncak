@@ -15,7 +15,7 @@
 
 					$data['Parola'] = md5($data['Parola']);
 				}
-
+				$data["RolId"]=0;
 				$create = $this->db->table('uyeler')->insert($data);
 
 				if($this->db->insertId() > 0){

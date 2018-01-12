@@ -25,6 +25,7 @@
 					$_SESSION['rolId'] = $u->RolId;
 					$_SESSION['userName'] = $username;
 					$_SESSION["md5"] = md5($u->UyeId.$u->RolId.$username);
+					VAR_DUMP($_SESSION);
 				}
 				return [
 					'error' => 0,
@@ -70,7 +71,6 @@
 			if(isset($_SESSION['md5']) && isset($_SESSION['userId']) &&isset($_SESSION['rolId']) && isset($_SESSION['userName'])){
 				
 				if($_SESSION['md5'] == md5($_SESSION['userId'].$_SESSION['rolId'].$_SESSION['userName'])){
-
 						return true;
 					}
 			}

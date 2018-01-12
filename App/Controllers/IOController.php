@@ -21,9 +21,9 @@
 					"username" => "required",
 					"password" => "required"
 				]);
-
 				if($validator === true){
 					$IOModel->login($this->request->username, $this->request->password);
+					echo md5($this->request->password);
 					if($IOModel->isLogin()){
 						$this->redirect('');
 					}
