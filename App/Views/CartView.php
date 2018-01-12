@@ -15,19 +15,20 @@
 					<tbody>
 						<?php 
 							foreach($carts as $cart){
-
+								$product = $p->get(intval($cart));
 								?>
 
 							<tr>
 							<td class="cart_product">
-								<a href=""><img src="<?php echo $link; ?>images/productImages/<?php echo $p->get($cart->UrunId)->ResimYol; ?>" alt=""></a>
+								
+								<a href=""><img src="<?php echo $link; ?>images/productImages/<?php echo $product->ResimYol; ?>" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href=""><?php echo $p->get($cart->UrunId)->Baslik; ?></a></h4>
+								<h4><a href=""><?php echo $product->Baslik; ?></a></h4>
 								
 							</td>
 							<td class="cart_price">
-								<p><?php echo $p->get($cart->UrunId)->UrunFiyat; ?></p>
+								<p><?php echo $product->UrunFiyat; ?></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -37,10 +38,10 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price"><?php echo $p->get($cart->UrunId)->UrunFiyat; ?></p>
+								<p class="cart_total_price"><?php echo $product->UrunFiyat; ?></p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="deleteCart/<?php echo $p->get($cart->UrunId)->UrunId; ?>.html"><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="deleteCart/<?php echo $product->UrunId; ?>.html"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 								<?php

@@ -125,7 +125,7 @@
 
 			if($IOModel->isLogin()){
 
-				$cart = $this->db->query("SELECT * FROM alisverissepeti WHERE UyeId='$id'");
+				$cart = $this->db->query("SELECT UrunId FROM alisverissepeti WHERE UyeId='$id'");
 
 				if(count($cart)>0){
 

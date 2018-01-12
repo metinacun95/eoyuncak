@@ -11,13 +11,14 @@
 		public $master;
 
 		function before(){
-			$this->master = new MasterController;
-			$this->master->head([
-				"title" => "E-Oyuncak - Anasayfa"
-			]);
+			
 		}
 
 		public function index(){
+			$this->master = new MasterController;
+			$this->master->head([
+				"title" => "E-Oyuncak - Sepetim"
+			]);
 			$cart=new CartModel;
 			$p=new ProductModel;
 			$data=[];
@@ -46,7 +47,7 @@
 		}
 
 
-		function delete(){
+		function deletecart(){
 			$c=new CartModel;
 			$id = intval($this->params["id"]);
 			$c->destroy($id);
