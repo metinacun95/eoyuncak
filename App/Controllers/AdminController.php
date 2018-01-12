@@ -44,8 +44,26 @@
 			return $this->view("Admin/AddCategory", ["link" => $this->link]);
 		}
 		public function updateCategory(){
+			$p = new ProductModel;
 			$categoryId = intval($this->params["id"]);
-			
+			if($categoryId > 0){
+				$category = $p->getCategory($categoryId);
+				if($category != null){
+					if(isset($this->request->yeniAd)){
+						$yeniAd = toHtmlChars($this->request->yeniAd);
+						$p->updateCategory($categoryId,$this->request->yeniAd);
+						$category = $p->getCategory($categoryId);
+					}
+					$this->master->head(["title" => "Admin-Kategori Düzenle"]);
+					$this->view("Admin/UpdateCategory",["link" => $this->link,"category" => $category]);
+				}
+				else{
+					$this->redirect("");
+				}
+			}
+			else{
+				$this->redirect("");
+			}
 		}
 
 		public function deleteCategory(){
@@ -237,7 +255,7 @@
 		function uploadImageProduct(){
 			$id = intval($this->params["id"]);
 			$p = new ProductModel;
-			$getProduct = $p->get($id);
+			$getProduct = $p->getKayit0($id);
 			if(count($getProduct) > 0){
 				if($getProduct->UyeId == $_SESSION["userId"]){
 					if($_FILES){
@@ -258,6 +276,7 @@
 					}
 				}
 				else{
+					
 					return $this->redirect("");
 				}
 			}
@@ -265,7 +284,18 @@
 				return $this->redirect("");
 			}
 		}
-		public function updateProduct(){}
+		public function updateProduct(){
+			$id = intval($this->params["id"]);
+			if($id > 0){
+				$p = new ProductModel;
+				$product = $p->get($id);
+				$this->master->head(["title" => "Admin-Ürün Düzenle"]);
+				return $this->view("Admin/UpdateProduct", ["link" => $this->link,"product"=>$product,"p" => $p]);
+			}
+			else{
+				$this->redirect("");
+			}
+		}
 
 		public function deleteProduct(){
 			$p = new ProductModel;

@@ -61,9 +61,7 @@
 		}
 
 		function update(){
-
 			if($_POST){
-				echo $_POST["Adres"];
 				$userModel = new UserModel;
 				if(!empty($_POST["yeniparola"]) && $userModel->get($_SESSION["userId"])->Parola==md5($_POST["mevcutparola"])){
 
@@ -76,7 +74,7 @@
 					]);
 
 					if($validator === true){
-
+						echo "www";
 						$data = [];
 						$data["Ad"] = $this->request->Ad;
 						$data["Soyad"] = $this->request->Soyad;
@@ -84,11 +82,13 @@
 						$data["Parola"] = $this->request->yeniparola;
 						$data["Adres"] = $this->request->Adres;
 						$userModel->update($data,$_SESSION["userId"]);
+						exit;
 						$this->redirect('profile.html');
 
 					}else{
 
 						$_SESSION['FLASH_SIGNUP'] = $validator;
+						exit;
 						$this->redirect('profile.html');
 					}
 				}else{
@@ -98,20 +98,20 @@
 						"Eposta" => "required|valid_email",
 						"Adres"	=> "max_len,255"
 					]);
-
 					if($validator === true){
-
 						$data = [];
 						$data["Ad"] = $this->request->Ad;
 						$data["Soyad"] = $this->request->Soyad;
 						$data["Eposta"] = $this->request->Eposta;
 						$data["Adres"] = $this->request->Adres;
 						$userModel->update($data,$_SESSION["userId"]);
+						exit;
 						$this->redirect('profile.html');
 
 					}else{
 
 						$_SESSION['FLASH_SIGNUP'] = $validator;
+						exit;
 						$this->redirect('profile.html');
 					}
 				}

@@ -19,7 +19,7 @@
 				                <input type="text" name="Ad" value="<?php echo $user->Ad; ?>" class="form-control" required="required" placeholder="Adınız" maxlength="20">
 				            </div>
 				            <div class="form-group col-md-6">
-				                <input type="text" name=Soyad" value="<?php echo $user->Soyad; ?>" class="form-control" required="required" placeholder="Adınız" maxlength="20">
+				                <input type="text" name="Soyad" value="<?php echo $user->Soyad; ?>" class="form-control" required="required" placeholder="Adınız" maxlength="20">
 				            </div>
 				            <div class="form-group col-md-6">
 				                <input type="email" name="Eposta" value="<?php echo $user->Eposta; ?>" class="form-control" required="required" placeholder="Email adresiniz" maxlength="100">

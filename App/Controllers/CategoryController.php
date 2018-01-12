@@ -20,14 +20,25 @@
 
 		function category(){
 			$sef = $this->params["categorySef"];
-			$p=new ProductModel;
-			$data["p"] = $p;
-			$data["sef"] = $sef;
-			$data["link"] = $this->link;
-			$data["mostPays"] = $p->mostPays();
-			$data["products"] = $p->getAll();
-			$data["getCategories"] = $p->getCategories(0);
-			$this->view("KategoriUrun",$data);
+			if($sef == sefLink($sef)){
+				$p=new ProductModel;
+				$category = $p->getCategoryFromSefLink($sef);
+				if(count($category) > 0){
+					$data["p"] = $p;
+					$data["sef"] = $sef;
+					$data["link"] = $this->link;
+					$data["mostPays"] = $p->mostPays();
+					$data["products"] = $p->getFromCategory($category->KategoriId);
+					$data["getCategories"] = $p->getCategories($category->KategoriId);
+					$this->view("KategoriUrun",$data);
+				}
+				else{
+					$this->redirect("");
+				}
+			}
+			else{
+				$this->redirect("");
+			}
 		}
 
 		function after(){

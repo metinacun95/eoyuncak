@@ -22,11 +22,35 @@
 		function getCategory($categoryId = 0){
 			return $this->db->table("kategoriler")->select("*")->where("KategoriId",$categoryId)->get();
 		}
+		function updateCategory($categoryId = 0,$newName = ""){
+			return $this->db->table("kategoriler")->where("KategoriId",$categoryId)->update(["KategoriAdi" => $newName]);
+		}
 		function getCategoryFromSefLink($sefLink = ""){
 			if($sefLink == sefLink($sefLink)){
 				return $this->db->table("kategoriler")->select("*")->where("Sef",sefLink($sefLink))->get();
 			}
 			return ["error" => 1,"errorMessage" => "Hatalı sef link"];
+		}
+		function getFromCategory($categoryId = 0){
+			$getDownIds = $this->getDownCategoryIds($categoryId);
+			$getDownIds[] = $categoryId;
+			for($i=0;$i<count($getDownIds);$i++){
+				$getDownIds[$i] = "urunler.KategoriId='".$getDownIds[$i]."'";
+			}
+			$whereString = "WHERE ".implode(" OR ",$getDownIds);
+			$sql = "SELECT * FROM urunler INNER JOIN urunresimler ON urunresimler.UrunId=urunler.UrunId ".$whereString;
+			$products = $this->db->query($sql);
+			return $products;
+		}
+		function getDownCategoryIds($categoryId,$array = []){
+			$category = $this->getCategory($categoryId);
+			$alts = $this->db->table("kategoriler")->select("KategoriId,Alt")->where("Alt",$categoryId)->getAll();
+			foreach($alts as $alt){
+				$array[] = intval($alt->KategoriId);
+				$array = $this->getDownCategoryIds($alt->KategoriId,$array);
+				
+			}
+			return $array;
 		}
 		function getCategories($sub = 0){
 			return $this->db->table("kategoriler")->select("*")->where("Alt",$sub)->orderBy("sira","ASC")->getAll();
@@ -115,12 +139,20 @@
 			db->
 			table("urunler")->
 			select("*")->
-			innerJoin("urunozellikler","urunler.UrunTip","urunozellikler.UrunTipId")->
-			innerJoin("urunozellikdegerler","urunler.UrunId","urunozellikdegerler.UrunId")->
-			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
 			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
 			where("urunler.UrunId",$productId)->
 			get();
+		}
+		function getKayit0($productId = 0){
+			return $this->
+			db->
+			table("urunler")->
+			select("*")->
+			where("urunler.UrunId",$productId)->
+			get();
+		}
+		function query($sql){
+			return $this->db->query($sql);
 		}
 		function getAll(){
 			return $this->
@@ -130,7 +162,6 @@
 			innerJoin("uyeler","uyeler.UyeId","urunler.UyeId")->
 			innerJoin("urunresimler","urunresimler.UrunId","urunler.UrunId")->
 			getAll();
-			print_r($data);
 		}
 		function insertImageToProduct($productId = 0,$imgFile = ""){
 			$newFileName = $this->randomFileName().".png";
